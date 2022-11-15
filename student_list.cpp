@@ -71,6 +71,28 @@ void intStudents::insert(InternationalStudent* stud){
 	}
 	else{
 		InternationalStudent* tempIntStud = TopIntStudent;
+		if(compareResearchScore(stud,tempIntStud) == 1){
+			stud->nextInt = tempIntStud;
+			TopIntStudent = stud;
+			return;
+		}
+		else if(compareResearchScore(stud,tempIntStud)==3){
+			if(compareCGPA(stud,tempIntStud) == 1){
+				stud->nextInt = tempIntStud;
+				TopIntStudent = stud;
+				return;
+			}
+			else if(compareCGPA(stud,tempIntStud) == 3){
+				if(compareCountry(stud,tempIntStud) == 1){
+					stud->nextInt = tempIntStud;
+					TopIntStudent = stud;
+					return;
+				}
+			}
+
+		}
+
+
 		while(tempIntStud != lastIntStudent ){
 			if(compareResearchScore(stud,tempIntStud->nextInt) == 1){
 				stud->nextInt = tempIntStud->nextInt;
