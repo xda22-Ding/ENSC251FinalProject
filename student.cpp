@@ -12,10 +12,13 @@ Student::Student(string fn, string ln, float cgpa, int score, int APPID){
     setResearchScore(score);
     setAppID(APPID);
     isValid();
+    next = NULL;
 }
 
 //The default constructor of student class
-Student::Student(){};
+Student::Student(){
+	next = NULL;
+};
 
 //Check if the fields of Student object meet certain requirements.
 bool Student::isValid() const{
@@ -77,6 +80,9 @@ void Student::setResearchScore(int score){
 void Student::setAppID(int APPID){
 	app_id = APPID;
 }
+
+
+
 
 
 //The constructor of ToeflScore Class
@@ -143,12 +149,12 @@ int compareCGPA (const Student& stu1, const Student& stu2){
 
 }
 
-int compareResearchScore (const Student& stu1, const Student& stu2) {
-	if (stu1.research_score > stu2.research_score)
+int compareResearchScore (const Student* stu1, const Student* stu2) {
+	if (stu1->research_score > stu2->research_score)
 		return 1; // student1 is greater than student2
-	if (stu1.research_score < stu2.research_score)
+	if (stu1->research_score < stu2->research_score)
 		return 2; // student1 is less than student2
-	if (stu1.research_score == stu2.research_score)
+	if (stu1->research_score == stu2->research_score)
 		return 3; // student 1 is equal to student2
         else
   		return 4; // invalid
