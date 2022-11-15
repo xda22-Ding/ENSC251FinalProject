@@ -16,23 +16,45 @@ void domStudents::insert(DomesticStudent* stud){
 	}
 	else{
 		DomesticStudent* tempStud = TopStudent;
+		if(compareResearchScore(stud,tempStud) == 1){
+			stud->nextDom = tempStud;
+			TopStudent = stud;
+			return;			
+		}
+		else if(compareResearchScore(stud,tempStud) == 3){
+			if(compareCGPA(stud,tempStud) == 1){
+				stud->nextDom = tempStud;
+				TopStudent = stud;
+				return;		
+			}
+			else if(compareCGPA(stud,tempStud) == 3){
+				if(compareProvince(stud,tempStud) == 1){
+					stud->nextDom = tempStud;
+					TopStudent = stud;
+					return;							
+				}
+			}
+		}
+
+
+
 		while(tempStud != lastStudent ){
 			if(compareResearchScore(stud,tempStud->nextDom) == 1){
 				stud->nextDom = tempStud->nextDom;
 				tempStud->nextDom = stud;
-				break;
+				return;
 			}
 			else if(compareResearchScore(stud,tempStud->nextDom) == 3){
 				if(compareCGPA(stud,tempStud->nextDom) == 1){
 					stud->nextDom = tempStud->nextDom;
 					tempStud->nextDom = stud;
-					break;
+					return;
 				}
 				else if(compareCGPA(stud,tempStud->nextDom) == 3){
 					if(compareProvince(stud,tempStud->nextDom) == 1){
 						stud->nextDom = tempStud->nextDom;
 						tempStud->nextDom = stud;
-						break;
+						return;
 					}
 				}
 			}
