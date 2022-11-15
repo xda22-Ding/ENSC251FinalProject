@@ -137,12 +137,12 @@ void ToeflScore::setWriting(int write){
 }
 
 // compare functions: 1.greater than 2.less than 3.equal to 4.invalid
-int compareCGPA (const Student& stu1, const Student& stu2){
-	if (stu1.CGPA > stu2.CGPA)
+int compareCGPA (const Student* stu1, const Student* stu2){
+	if (stu1->CGPA > stu2->CGPA)
 		return 1; // student1 is greater than student2
-	if (stu1.CGPA < stu2.CGPA)
+	if (stu1->CGPA < stu2->CGPA)
 		return 2; // student1 is less than student2
-	if (stu1.CGPA == stu2.CGPA)
+	if (stu1->CGPA == stu2->CGPA)
 		return 3; // student 1 is equal to student2
         else
 		return 4; // invalid
@@ -161,47 +161,47 @@ int compareResearchScore (const Student* stu1, const Student* stu2) {
 
 }
 // comparing name by alphabet
-int compareFirstName (const Student& stu1, const Student& stu2) {
-	if (stu1.first_name > stu2.first_name)
+int compareFirstName (const Student* stu1, const Student* stu2) {
+	if (stu1->first_name > stu2->first_name)
 		return 1;
-	if (stu1.first_name < stu2.first_name)
+	if (stu1->first_name < stu2->first_name)
 		return 2;
-	if (stu1.first_name == stu2.first_name)
+	if (stu1->first_name == stu2->first_name)
 		return 3;
 	else
 		return 4;
 
 }
-int compareLastName (const Student& stu1, const Student& stu2) {
-	if (stu1.last_name > stu2.last_name)
+int compareLastName (const Student* stu1, const Student* stu2) {
+	if (stu1->last_name > stu2->last_name)
 		return 1;
-	if (stu1.last_name < stu2.last_name)
+	if (stu1->last_name < stu2->last_name)
 		return 2;
-	if (stu1.last_name == stu2.last_name)
-		return 3;
-	else
-		return 4;
-
-}
-
-int compareCountry (const InternationalStudent& stu1, const InternationalStudent& stu2){
-	if (stu1.country > stu2.country)
-		return 1;
-	if (stu1.country < stu2.country)
-		return 2;
-	if (stu1.country == stu2.country)
+	if (stu1->last_name == stu2->last_name)
 		return 3;
 	else
 		return 4;
 
 }
 
-int compareProvince (const DomesticStudent& stu1, const DomesticStudent& stu2) {
-	if (stu1.province > stu2.province)
+int compareCountry (const InternationalStudent* stu1, const InternationalStudent* stu2){
+	if (stu1->country > stu2->country)
 		return 1;
-	if (stu1.province < stu2.province)
+	if (stu1->country < stu2->country)
 		return 2;
-	if (stu1.province == stu2.province)
+	if (stu1->country == stu2->country)
+		return 3;
+	else
+		return 4;
+
+}
+
+int compareProvince (const DomesticStudent* stu1, const DomesticStudent* stu2) {
+	if (stu1->province > stu2->province)
+		return 1;
+	if (stu1->province < stu2->province)
+		return 2;
+	if (stu1->province == stu2->province)
 		return 3;
 	else
 		return 4;
@@ -217,11 +217,14 @@ InternationalStudent::InternationalStudent(string fn, string ln, float cgpa, int
     setAppID(APPID);
     setToeflScore(toeflscore_para);
     setCountry(country_para);
+    nextInt = NULL;
 
 }
 
 //The default constructor of InternationalStudent Class
-InternationalStudent::InternationalStudent(){}
+InternationalStudent::InternationalStudent(){
+	nextInt = NULL;
+}
 
 ToeflScore InternationalStudent::getToeflScore() const{
 	return toefl_score;
@@ -247,9 +250,12 @@ DomesticStudent::DomesticStudent(string fn, string ln, float cgpa, int score, in
     setResearchScore(score);
     setAppID(APPID);
     setProvince(province_para);
+    nextDom = NULL;
 }
 
-DomesticStudent::DomesticStudent(){}
+DomesticStudent::DomesticStudent(){
+	nextDom = NULL;
+}
 
 string DomesticStudent::getProvince() const{
 	return province;

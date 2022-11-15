@@ -3,15 +3,29 @@
 #include <iomanip>
 using namespace std;
 
-class Students
+class domStudents
 {
 public:
-	Students();
+	domStudents();
 
-	void insert(Student* stud);
+	void insert(DomesticStudent* stud);
 	void printList();
 private:
-	Student* TopStudent;
-	Student* lastStudent;
+	DomesticStudent* TopStudent;
+	DomesticStudent* lastStudent;
+	
+};
+
+
+class intStudents
+{
+public:
+	intStudents();
+
+	void insert(InternationalStudent* stud);
+	void printList();
+private:
+	InternationalStudent* TopIntStudent;
+	InternationalStudent* lastIntStudent;
 	
 };

@@ -4,30 +4,44 @@
 #include <iomanip>
 using namespace std;
 
-Students::Students(){
+domStudents::domStudents(){
 	TopStudent = NULL;
 	lastStudent = NULL;
 }
 
-void Students::insert(Student* stud){
+void domStudents::insert(DomesticStudent* stud){
 	if(TopStudent==NULL){
 		TopStudent = stud;
 		lastStudent = stud;
 	}
 	else{
-		Student* tempStud = TopStudent;
+		DomesticStudent* tempStud = TopStudent;
 		while(tempStud != lastStudent ){
-			if(compareResearchScore(stud,tempStud->next) == 1){
-				stud->next = tempStud->next;
-				tempStud->next = stud;
+			if(compareResearchScore(stud,tempStud->nextDom) == 1){
+				stud->nextDom = tempStud->nextDom;
+				tempStud->nextDom = stud;
 				break;
+			}
+			else if(compareResearchScore(stud,tempStud->nextDom) == 3){
+				if(compareCGPA(stud,tempStud->nextDom) == 1){
+					stud->nextDom = tempStud->nextDom;
+					tempStud->nextDom = stud;
+					break;
+				}
+				else if(compareCGPA(stud,tempStud->nextDom) == 3){
+					if(compareProvince(stud,tempStud->nextDom) == 1){
+						stud->nextDom = tempStud->nextDom;
+						tempStud->nextDom = stud;
+						break;
+					}
+				}
 			}
 
 
-			tempStud = tempStud -> next;
+			tempStud = tempStud -> nextDom;
 		}
 		if(tempStud == lastStudent){
-			tempStud->next = stud;
+			tempStud->nextDom = stud;
 			lastStudent = stud;
 		}
 
@@ -35,13 +49,65 @@ void Students::insert(Student* stud){
 
 }
 
-void Students::printList(){
-	Student* tempStud = TopStudent;
+void domStudents::printList(){
+	DomesticStudent* tempStud = TopStudent;
 	while(tempStud != NULL){
-		cout << tempStud->getResearchScore() << endl;
-		tempStud = tempStud->next;
+		cout << *tempStud << endl;
+		tempStud = tempStud->nextDom;
+	}
+}
+
+
+
+intStudents::intStudents(){
+	TopIntStudent = NULL;
+	lastIntStudent = NULL;
+}
+
+void intStudents::insert(InternationalStudent* stud){
+	if(TopIntStudent==NULL){
+		TopIntStudent = stud;
+		lastIntStudent = stud;
+	}
+	else{
+		InternationalStudent* tempIntStud = TopIntStudent;
+		while(tempIntStud != lastIntStudent ){
+			if(compareResearchScore(stud,tempIntStud->nextInt) == 1){
+				stud->nextInt = tempIntStud->nextInt;
+				tempIntStud->nextInt = stud;
+				break;
+			}
+			else if(compareResearchScore(stud,tempIntStud->nextInt) == 3){
+				if(compareCGPA(stud,tempIntStud->nextInt) == 1){
+					stud->nextInt = tempIntStud->nextInt;
+					tempIntStud->nextInt = stud;
+					break;
+				}
+				else if(compareCGPA(stud,tempIntStud->nextInt) == 3){
+					if(compareCountry(stud,tempIntStud->nextInt) == 1){
+						stud->nextInt = tempIntStud->nextInt;
+						tempIntStud->nextInt = stud;
+						break;
+					}
+				}
+			}
+
+
+			tempIntStud = tempIntStud -> nextInt;
+		}
+		if(tempIntStud == lastIntStudent){
+			tempIntStud->nextInt = stud;
+			lastIntStudent = stud;
+		}
+
 	}
 
+}
 
-
+void intStudents::printList(){
+	InternationalStudent* tempIntStud = TopIntStudent;
+	while(tempIntStud != NULL){
+		cout << *tempIntStud << endl;
+		tempIntStud = tempIntStud->nextInt;
+	}
 }

@@ -30,10 +30,10 @@ public:
 
 
     // compare student's cgpa, research score, name, country and province
-    friend int compareCGPA (const Student& stu1, const Student& stu2);
+    friend int compareCGPA (const Student* stu1, const Student* stu2);
     friend int	compareResearchScore (const Student* stu1, const Student* stu2);
-    friend int compareFirstName (const Student& stu1, const Student& stu2);
-    friend int compareLastName (const Student& stu1, const Student& stu2);
+    friend int compareFirstName (const Student* stu1, const Student* stu2);
+    friend int compareLastName (const Student* stu1, const Student* stu2);
 
 
 private:
@@ -81,6 +81,7 @@ private:
 class InternationalStudent : public Student
 {
 public:
+	InternationalStudent* nextInt;
 	//The constructor of Inheritted class InternationalStudent Class
 	InternationalStudent(std::string fn, std::string ln, float cgpa, int score, int APPID, ToeflScore toefl_score, std::string country);
 	InternationalStudent();
@@ -90,7 +91,7 @@ public:
 	void setCountry(std::string country);
         
 	//compare
-	friend int compareCountry (const InternationalStudent& stu1, const InternationalStudent& stu2);
+	friend int compareCountry (const InternationalStudent* stu1, const InternationalStudent* stu2);
 	//overload operator
 	friend std::ostream& operator <<(std::ostream& outs, const InternationalStudent& interStu);
 private:
@@ -102,6 +103,7 @@ private:
 class DomesticStudent : public Student
 {
 public:
+	DomesticStudent* nextDom;
 	//The constructor of Inheritted class DomesticlStudent Class
 	DomesticStudent(std::string fn, std::string ln, float cgpa, int score, int APPID, std::string province);
 	DomesticStudent();
@@ -109,7 +111,7 @@ public:
 	void setProvince(std::string province);
        
        //compare
-       friend int compareProvince (const DomesticStudent& stu1, const DomesticStudent& stu2);
+       friend int compareProvince (const DomesticStudent* stu1, const DomesticStudent* stu2);
        //overload operator
        friend std::ostream& operator <<(std::ostream& outs, const DomesticStudent& domesStu);
 private:
