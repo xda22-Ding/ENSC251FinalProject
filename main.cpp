@@ -40,6 +40,10 @@ int main(){
    
     	//get firstName separated by comma
     	getline(ss, firstName, ',');
+    	if(firstName.empty()){
+    		cout << "the student's first name is missing " << endl;
+    		exit(1);
+    	}
 
     	tempStud->setFirstName(firstName);
    
@@ -47,22 +51,39 @@ int main(){
 
     	//get lastName separated by comma
     	getline(ss, lastName, ',');
+    	if(lastName.empty()){
+    		cout << "the student's last name is missing " << endl;
+    		exit(1);
+    	}
     	tempStud->setLastName(lastName);
+
    
 
     	//get province separated by comma
     	getline(ss, province, ',');
+    	if(province.empty()){
+    		cout << "the student's province is missing " << endl;
+    		exit(1);
+    	}
     	tempStud->setProvince(province);
    
 
     	//get cpga separated by comma, and convert string to float
     	getline(ss, s_cgpa, ',');
+    	if(s_cgpa.empty()){
+    		cout << "the student's s_cgpa is missing " << endl;
+    		exit(1);
+    	}
     	cgpa = atof(s_cgpa.c_str());
     	tempStud->setCGPA(cgpa);
    
    
     	//get researchScore separated by comma, and convert it to int
     	getline(ss, s_researchScore, ',');
+    	if(s_researchScore.empty()){
+    		cout << "the student's s_researchScore is missing " << endl;
+    		exit(1);
+    	}
     	researchScore = atoi(s_researchScore.c_str());
     	tempStud->setResearchScore(researchScore);
    		stuList.insert(tempStud);
@@ -109,28 +130,48 @@ int main(){
    
     	//get firstName separated by comma
     	getline(ss, firstName, ',');
+    	if(firstName.empty()){
+    		cout << "the student's first name is missing " << endl;
+    		exit(1);
+    	}
     	tempStud->setFirstName(firstName);
    
    
 
     	//get lastName separated by comma
     	getline(ss, lastName, ',');
+    	if(lastName.empty()){
+    		cout << "the student's last name is missing " << endl;
+    		exit(1);
+    	}
     	tempStud->setLastName(lastName);
    
 
     	//get country separated by comma
     	getline(ss, country, ',');
+    	if(country.empty()){
+    		cout << "the student's country is missing " << endl;
+    		exit(1);
+    	}
     	tempStud->setCountry(country);
    
 
     	//get cpga separated by comma, and convert string to float
     	getline(ss, s_cgpa, ',');
+    	if(s_cgpa.empty()){
+    		cout << "the student's s_cgpa is missing " << endl;
+    		exit(1);
+    	}
     	cgpa = atof(s_cgpa.c_str());
     	tempStud->setCGPA(cgpa);
    
    
     	//get researchScore separated by comma, and convert it to int
     	getline(ss, s_researchScore, ',');
+    	if(s_researchScore.empty()){
+    		cout << "the student's s_researchScore is missing " << endl;
+    		exit(1);
+    	}
     	researchScore = atoi(s_researchScore.c_str());
     	tempStud->setResearchScore(researchScore);
 
@@ -139,23 +180,39 @@ int main(){
 
    		getline(ss, s_read, ',');
     	read = atof(s_read.c_str());
+    	if(s_read.empty()){
+    		cout << "the student's s_read is missing " << endl;
+    		exit(1);
+    	}
     	if(read < 20) 
     		drop_flag = true;
     	tempToefl->setReading(read);
    
     	getline(ss, s_listen, ',');
+    	if(s_listen.empty()){
+    		cout << "the student's s_listen is missing " << endl;
+    		exit(1);
+    	}
     	listen = atof(s_listen.c_str());
     	if(listen < 20) 
     		drop_flag = true;
     	tempToefl->setListening(listen);
    
     	getline(ss, s_speak, ',');
+    	if(s_speak.empty()){
+    		cout << "the student's s_speak is missing " << endl;
+    		exit(1);
+    	}
     	speak = atof(s_speak.c_str());
     	if(speak < 20) 
     		drop_flag = true;
     	tempToefl->setSpeaking(speak);
    
     	getline(ss, s_write, ',');
+    	if(s_write.empty()){
+    		cout << "the student's s_write is missing " << endl;
+    		exit(1);
+    	}
    		write = atof(s_write.c_str());
    		if(write < 20)
     		drop_flag = true;
