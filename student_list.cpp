@@ -79,6 +79,131 @@ void domStudents::printList(){
 	}
 }
 
+DomesticStudent* domStudents:: getTop( )
+{
+   return TopStudent;
+}
+
+ DomesticStudent* domStudents::getlast( )
+{
+   return lastStudent;
+}
+
+ void domStudents:: Search(domStudents head, double target)
+{
+   DomesticStudent* here = head.getTop();
+   int count =0;
+   if(here == NULL)
+   {
+      cout << "The object is empty."<< endl;
+   }
+   else
+   { 
+  
+     while (here != head.getlast())
+	 {  
+		if(abs(here->getCGPA() - target) < 0.01 )
+         {
+          count =count +1;
+		  cout << here->getFirstName() << endl;
+          cout << here->getLastName() << endl;
+		   cout << here->getProvince() << endl;
+		   cout << here->getCGPA() << endl;
+
+         }
+		 here = here->nextDom;
+	 }
+    if ( count ==0 )
+     {
+       cout<<"Information here not found" <<endl;
+     }
+   }
+}
+
+void domStudents::Search(domStudents head, int target)
+{
+   DomesticStudent* here = head.getTop();
+   int count =0;
+   if(here == NULL)
+   {
+     cout << "The object is empty."<< endl;
+   }
+   else
+   {
+      if (target > 100000)
+        {
+			while (here != head.getlast())
+	       {  
+		       if(here->getAppID() == target)
+             {
+              count =count +1;
+		      cout << here->getFirstName() << endl;
+              cout << here->getLastName() << endl;
+		      cout << here->getProvince() << endl;
+		      cout << here->getCGPA() << endl;
+
+         }
+		 here = here->nextDom;
+	      }
+    
+        }
+    else
+       {
+          while (here != head.getlast())
+	       {  
+		       if(here->getResearchScore() == target)
+             {
+              count =count +1;
+		      cout << here->getFirstName() << endl;
+              cout << here->getLastName() << endl;
+		      cout << here->getProvince() << endl;
+		      cout << here->getCGPA() << endl;
+
+              }
+		      here = here->nextDom;
+	      }
+
+        }
+    
+   }  
+    if ( count ==0 )
+     {
+       cout<<"Information here not found" <<endl;
+     }
+}
+
+void domStudents:: Search(domStudents head, string FirstName, string LastName)
+{
+   DomesticStudent* here = head.getTop();
+   int count =0;
+   if(here == NULL)
+   {
+     cout << "The object is empty."<< endl;
+   }
+   else
+   {
+      while (here != head.getlast())
+	       {  
+		       if((here->getFirstName() == FirstName) && (here->getLastName()== LastName))
+             {
+              count =count +1;
+		      cout << here->getFirstName() << endl;
+              cout << here->getLastName() << endl;
+		      cout << here->getProvince() << endl;
+		      cout << here->getCGPA() << endl;
+
+            }
+		 here = here->nextDom;
+	      }
+
+        }
+       
+     if ( count ==0 )
+     {
+       cout<<"Information here not found" <<endl;
+     }
+   }  
+
 
 
 intStudents::intStudents(){
