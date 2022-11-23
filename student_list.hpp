@@ -10,6 +10,12 @@ public:
 
 	void insert(DomesticStudent* stud);
 	void printList();
+	
+	DomesticStudent* getTop();
+        DomesticStudent* getlast();
+        void Search(domStudents head, double target);
+        void Search(domStudents head, int target);
+	void Search(domStudents head, string FirstName, string LastName);
 private:
 	DomesticStudent* TopStudent;
 	DomesticStudent* lastStudent;
