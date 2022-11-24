@@ -39,6 +39,21 @@ public:
 
 	void insert(InternationalStudent* stud);
 	void printList();
+	
+	InternationalStudent* getTop();
+        InternationalStudent* getlast();
+	
+    //This Search Function is to find some international students satisfied requirements of CGPA   2 b
+    void Search(intStudents head, double target);
+	
+    //This Search Function is to find some international students satisfied requirements of application ID or research score 2b
+    void Search(intStudents head, int target);
+	
+    //This Search Function is to find some international students satisfied requirements of Name 2c
+    void Search(intStudents head, string FirstName, string LastName);
+	
+    //This function insert a new node in the linked list based on the required order 2d
+    void insert( intStudents int_list ,  InternationalStudent* stud);
 private:
 	InternationalStudent* TopIntStudent;
 	InternationalStudent* lastIntStudent;
