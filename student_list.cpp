@@ -2,6 +2,7 @@
 #include "student_list.hpp"
 #include<iostream>
 #include <iomanip>
+#include <cmath>
 using namespace std;
 
 domStudents::domStudents(){
@@ -89,120 +90,168 @@ DomesticStudent* domStudents:: getTop( )
    return lastStudent;
 }
 
+// To print all information of domestic student with the same CGPA(target)
  void domStudents:: Search(domStudents head, double target)
 {
+   // Set pointer "here" to point the top of linked list of domestic student 
    DomesticStudent* here = head.getTop();
-   int count =0;
+   int count =0; // Flag to recall the number of targets exist in the linked list
    if(here == NULL)
    {
       cout << "The object is empty."<< endl;
    }
    else
    { 
-  
-     while (here != head.getlast())
+     // Search whole linked list to check if or not have target
+     while (here != NULL)
 	 {  
-		if(abs(here->getCGPA() - target) < 0.01 )
-         {
-          count =count +1;
-		  cout << here->getFirstName() << endl;
-          cout << here->getLastName() << endl;
-		   cout << here->getProvince() << endl;
-		   cout << here->getCGPA() << endl;
-
-         }
-		 here = here->nextDom;
+            if(abs(here->getCGPA() - target) < 0.01 )// The condtion to judge if or not exist the required target
+           {
+              count =count +1;		 
+              cout << *here << endl;
+           }
+          here = here->nextDom;
 	 }
-    if ( count ==0 )
-     {
-       cout<<"Information here not found" <<endl;
-     }
-   }
-}
-
-void domStudents::Search(domStudents head, int target)
-{
-   DomesticStudent* here = head.getTop();
-   int count =0;
-   if(here == NULL)
-   {
-     cout << "The object is empty."<< endl;
-   }
-   else
-   {
-      if (target > 100000)
-        {
-			while (here != head.getlast())
-	       {  
-		       if(here->getAppID() == target)
-             {
-              count =count +1;
-		      cout << here->getFirstName() << endl;
-              cout << here->getLastName() << endl;
-		      cout << here->getProvince() << endl;
-		      cout << here->getCGPA() << endl;
-
-         }
-		 here = here->nextDom;
-	      }
-    
-        }
-    else
-       {
-          while (here != head.getlast())
-	       {  
-		       if(here->getResearchScore() == target)
-             {
-              count =count +1;
-		      cout << here->getFirstName() << endl;
-              cout << here->getLastName() << endl;
-		      cout << here->getProvince() << endl;
-		      cout << here->getCGPA() << endl;
-
-              }
-		      here = here->nextDom;
-	      }
-
-        }
-    
-   }  
-    if ( count ==0 )
-     {
-       cout<<"Information here not found" <<endl;
-     }
-}
-
-void domStudents:: Search(domStudents head, string FirstName, string LastName)
-{
-   DomesticStudent* here = head.getTop();
-   int count =0;
-   if(here == NULL)
-   {
-     cout << "The object is empty."<< endl;
-   }
-   else
-   {
-      while (here != head.getlast())
-	       {  
-		       if((here->getFirstName() == FirstName) && (here->getLastName()== LastName))
-             {
-              count =count +1;
-		      cout << here->getFirstName() << endl;
-              cout << here->getLastName() << endl;
-		      cout << here->getProvince() << endl;
-		      cout << here->getCGPA() << endl;
-
-            }
-		 here = here->nextDom;
-	      }
-
-        }
-       
      if ( count ==0 )
      {
        cout<<"Information here not found" <<endl;
      }
-   }  
+   }
+}
+
+// To print all information of domestic student with the same application ID(target) or research score(target)
+void domStudents::Search(domStudents head, int target)
+{
+    // Set pointer "here" to point the top of linked list of domestic student 
+   DomesticStudent* here = head.getTop();
+   int count =0; //Flag to recall the number of targets exist in the linked list
+   if(here == NULL) 
+   {
+     cout << "The object is empty."<< endl;
+   }
+   else
+   {
+      if (target > 100000) // To check if or not exist requied application ID in the linked list
+        {
+	   while (here != head.getlast())
+	    {  
+	       if(here->getAppID() == target)
+                   {
+                      count =count +1;
+		      cout << *here << endl;
+                   }
+		 here = here->nextDom;
+	      }    
+          }
+    else // To check if or not exist requied research score in the linked list 
+       {
+         while (here != NULL)
+	   {  
+	       if(here->getResearchScore() == target)
+                {
+                  count =count +1;
+		  cout << *here << endl;
+                }
+	      here = here->nextDom;
+	   }
+        }    
+      }  
+    if ( count ==0 )
+     {
+       cout<<"Information here not found" <<endl;
+     }
+}
+
+void domStudents:: Search (domStudents head,string FirstName, string LastName)
+{	
+   DomesticStudent* here = head.getTop();
+   int count =0;
+   if(here == NULL)
+   {
+     cout << "The object is empty."<< endl;
+   }
+   else
+   {
+      while (here != NULL)
+	{  
+           if((here->getFirstName() == FirstName) && (here->getLastName()== LastName))
+             {
+                count =count +1;
+		cout << *here << endl;
+             }
+          here = here->nextDom;
+	 }
+    }
+    if ( count ==0 )
+     {
+       cout<<"Information here not found" <<endl;
+     }
+   }
+
+// Based on the definition of order to insert new student to  the student's data 
+void domStudents::insert(domStudents dom_list, DomesticStudent* stud){
+
+    DomesticStudent* here = dom_list.getTop();//Set pointer "here" to point the top of linked list of domestic student 
+	if( here ==NULL){
+		TopStudent = stud;
+		lastStudent = stud;
+	}
+	else{
+		DomesticStudent* tempStud = here; // Creat the temp pointer to exchange the data
+		if(compareResearchScore(stud,tempStud) == 1){
+			stud->nextDom = tempStud;
+			here = stud;
+			return;			
+		  }
+		else if(compareResearchScore(stud,tempStud) == 3){
+			if(compareCGPA(stud,tempStud) == 1){
+				stud->nextDom = tempStud;
+				here = stud;
+				return;		
+			}
+			else if(compareCGPA(stud,tempStud) == 3){
+				if(compareProvince(stud,tempStud) == 1){
+					stud->nextDom = tempStud;
+					here = stud;
+					return;							
+				}
+			}
+		}
+
+
+        // Based on the requirement to arrange the order between two students
+		while(tempStud != lastStudent ){ 
+			if(compareResearchScore(stud,tempStud->nextDom) == 1){
+				stud->nextDom = tempStud->nextDom;
+				tempStud->nextDom = stud;
+				return;
+			}
+			else if(compareResearchScore(stud,tempStud->nextDom) == 3){
+				if(compareCGPA(stud,tempStud->nextDom) == 1){
+					stud->nextDom = tempStud->nextDom;
+					tempStud->nextDom = stud;
+					return;
+				}
+				else if(compareCGPA(stud,tempStud->nextDom) == 3){
+					if(compareProvince(stud,tempStud->nextDom) == 1){
+						stud->nextDom = tempStud->nextDom;
+						tempStud->nextDom = stud;
+						return;
+					}
+				}
+			}
+
+
+			tempStud = tempStud -> nextDom;
+		}
+		if(tempStud == lastStudent){
+			tempStud->nextDom = stud;
+			lastStudent = stud;
+		}
+    
+	}
+
+}
 
 
 
