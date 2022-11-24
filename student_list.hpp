@@ -13,9 +13,18 @@ public:
 	
 	DomesticStudent* getTop();
         DomesticStudent* getlast();
-        void Search(domStudents head, double target);
-        void Search(domStudents head, int target);
+	
+    //This Search Function is to find some domestic students satisfied requirements of CGPA   2 b
+    void Search(domStudents head, double target);
+
+    //This Search Function is to find some domestic students satisfied requirements of application ID or research score 2b
+    void Search(domStudents head, int target);
+
+    //This Search Function is to find some domestic students satisfied requirements of Name 2c
 	void Search(domStudents head, string FirstName, string LastName);
+    
+    //This function insert a new node in the linked list based on the required order 2d
+    void insert(domStudents dom_list, DomesticStudent* stud);
 private:
 	DomesticStudent* TopStudent;
 	DomesticStudent* lastStudent;
