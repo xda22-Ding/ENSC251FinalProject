@@ -330,6 +330,175 @@ void intStudents::printList(){
 	}
 }
 
+InternationalStudent* intStudents:: getTop( )
+{
+   return TopIntStudent;
+}
+
+ InternationalStudent* intStudents::getlast( )
+{
+   return lastIntStudent;
+}
+
+void intStudents:: Search(intStudents head, double target)
+{
+   InternationalStudent* here = head.getTop();
+   int count =0;
+   if(here == NULL)
+   {
+      cout << "The object is empty."<< endl;
+   }
+   else
+   {  
+     while (here != NULL)
+	 {  
+	    if(abs(here->getCGPA() - target) < 0.01 )
+            {
+              count =count +1;	 
+	      cout << *here << endl;
+            }
+	   here = here->nextInt;
+	 }
+      if ( count ==0 )
+        {
+          cout<<"Information here not found" <<endl;
+        }
+   }
+}
+
+void intStudents::Search(intStudents head, int target)
+{
+   InternationalStudent* here = head.getTop();
+   int count =0;
+   if(here == NULL)
+   {
+     cout << "The object is empty."<< endl;
+   }
+   else
+   {
+      if (target > 100000)
+        {
+          while (here != NULL)
+	    {  
+	        if(here->getAppID() == target)
+               {
+                  count =count +1;
+		  cout << *here << endl;
+                }
+		    here = here->nextInt;
+	    }  
+         }
+    else
+       {
+          while (here != NULL)
+	     {  
+		 if(here->getResearchScore() == target)
+                {
+                   count =count +1;
+		   cout << *here << endl;
+                }
+		here = here->nextInt;
+	    }
+        }   
+     }  
+    if ( count ==0 )
+     {
+       cout<<"Information here not found" <<endl;
+     }
+}
+
+void intStudents:: Search (intStudents head,string FirstName, string LastName)
+{
+	
+   InternationalStudent* here = head.getTop();
+   int count =0;
+   if(here == NULL)
+   {
+     cout << "The object is empty."<< endl;
+   }
+   else
+   {
+      while (here != NULL)
+	{  
+           if((here->getFirstName() == FirstName) && (here->getLastName()== LastName))
+              {
+                 count =count +1;
+		 cout << *here << endl;
+              }
+             here = here->nextInt;
+        }
+    }
+       
+     if ( count ==0 )
+     {
+       cout<<"Information here not found" <<endl;
+     }
+   }  
+
+void intStudents::insert(intStudents int_list , InternationalStudent* stud){
+
+      InternationalStudent* here = int_list.getTop();
+	if(here==NULL){
+		TopIntStudent = stud;
+		lastIntStudent = stud;
+	}
+	else{
+		InternationalStudent* tempIntStud = here;
+		if(compareResearchScore(stud,tempIntStud) == 1){
+			stud->nextInt = tempIntStud;
+			here = stud;
+			return;
+		}
+		else if(compareResearchScore(stud,tempIntStud)==3){
+			if(compareCGPA(stud,tempIntStud) == 1){
+				stud->nextInt = tempIntStud;
+				here = stud;
+				return;
+			}
+			else if(compareCGPA(stud,tempIntStud) == 3){
+				if(compareCountry(stud,tempIntStud) == 1){
+					stud->nextInt = tempIntStud;
+					here = stud;
+					return;
+				}
+			}
+
+		}
+
+
+		while(tempIntStud != lastIntStudent ){
+			if(compareResearchScore(stud,tempIntStud->nextInt) == 1){
+				stud->nextInt = tempIntStud->nextInt;
+				tempIntStud->nextInt = stud;
+				break;
+			}
+			else if(compareResearchScore(stud,tempIntStud->nextInt) == 3){
+				if(compareCGPA(stud,tempIntStud->nextInt) == 1){
+					stud->nextInt = tempIntStud->nextInt;
+					tempIntStud->nextInt = stud;
+					break;
+				}
+				else if(compareCGPA(stud,tempIntStud->nextInt) == 3){
+					if(compareCountry(stud,tempIntStud->nextInt) == 1){
+						stud->nextInt = tempIntStud->nextInt;
+						tempIntStud->nextInt = stud;
+						break;
+					}
+				}
+			}
+
+
+			tempIntStud = tempIntStud -> nextInt;
+		}
+		if(tempIntStud == lastIntStudent){
+			tempIntStud->nextInt = stud;
+			lastIntStudent = stud;
+		}
+
+	}
+
+}
+
 /*
  Student_Node::Student_Node(){}
  Student_Node::Student_Node(Student new_st)
