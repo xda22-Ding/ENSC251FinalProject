@@ -234,11 +234,19 @@ int main(){
 
 
 
-
  	cout << "international students: " << endl;
  	intList.printList();
 
+         DomesticStudent* dom_ptr=NULL, dom_stu;
+    dom_stu.setFirstName("Peter");
+  
+    dom_stu.setLastName("Smith");
+    dom_stu.setProvince("BC");
+    dom_stu.setCGPA(3.00);
+    dom_stu.setResearchScore(80);
+    dom_ptr = &dom_stu;
 
+    stuList.insert_new(stuList, dom_ptr);
  	cout << "domestic students: " << endl;
  	stuList.printList();
 
