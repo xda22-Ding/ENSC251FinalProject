@@ -246,7 +246,7 @@ int main(){
     dom_stu.setResearchScore(80);
     dom_ptr = &dom_stu;
 
-    stuList.insert_new(stuList, dom_ptr);
+    stuList.insert(stuList, dom_ptr);
  	cout << "domestic students: " << endl;
  	stuList.printList();
 
