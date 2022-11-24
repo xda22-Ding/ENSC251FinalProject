@@ -25,6 +25,8 @@ public:
     
     //This function insert a new node in the linked list based on the required order 2d
     void insert(domStudents dom_list, DomesticStudent* stud);
+    int totalStudent();
+    float rankStudent(DomesticStudent* objectStud);
 private:
 	DomesticStudent* TopStudent;
 	DomesticStudent* lastStudent;
@@ -54,6 +56,7 @@ public:
 	
     //This function insert a new node in the linked list based on the required order 2d
     void insert( intStudents int_list ,  InternationalStudent* stud);
+    int totalStudent();
 private:
 	InternationalStudent* TopIntStudent;
 	InternationalStudent* lastIntStudent;

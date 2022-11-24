@@ -242,6 +242,16 @@ int main(){
  	cout << "domestic students: " << endl;
  	stuList.printList();
 
+ 	cout << "There are " << intList.totalStudent() << " international students " << endl;
+ 	cout << "There are " << stuList.totalStudent() << " domestic students " << endl;
+ 	DomesticStudent *tempStud = stuList.getTop();
+ 	for(int i = 0; i < 10 ; i++){
+ 		tempStud = tempStud->nextDom;
+
+ 	}
+ 	cout << "rank " << stuList.rankStudent(tempStud) << endl;
+
+
 
 
 }

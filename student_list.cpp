@@ -499,6 +499,43 @@ void intStudents::insert(intStudents int_list , InternationalStudent* stud){
 
 }
 
+
+int domStudents::totalStudent(){
+	DomesticStudent* tempStud = TopStudent;
+	int total = 0;
+	while(tempStud != NULL){
+		total++;
+		tempStud = tempStud->nextDom;
+	}
+	return total;
+}
+
+float domStudents::rankStudent(DomesticStudent* objectStud){
+	DomesticStudent* tempStud = TopStudent;
+	int rank = 1;
+	while(tempStud != objectStud){
+		rank++;
+		tempStud = tempStud -> nextDom;
+	}
+	int total = totalStudent();
+	float result = (float) rank/ (float) total;
+	return result;
+
+
+}
+
+
+int intStudents::totalStudent(){
+	InternationalStudent* tempIntStud = TopIntStudent;
+	int total = 0;
+	while(tempIntStud != NULL){
+		total++;
+		tempIntStud = tempIntStud->nextInt;
+	}
+
+	return total;
+
+}
 /*
  Student_Node::Student_Node(){}
  Student_Node::Student_Node(Student new_st)
