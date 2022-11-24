@@ -496,7 +496,6 @@ void intStudents::insert(intStudents int_list , InternationalStudent* stud){
 		}
 
 	}
-
 }
 
 /*
@@ -608,7 +607,7 @@ void intStudents::insert(intStudents int_list , InternationalStudent* stud){
      if (compareResearchScore_modified(s1, s2) == -1)
          return -1;
      if (compareCPGA_modified(s1, s2) == 1)
-         return -1;
+         return 1;
      if (compareCPGA_modified(s1, s2) == -1)
          return -1;
      return 1;
