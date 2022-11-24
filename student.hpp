@@ -31,7 +31,7 @@ public:
 
     // compare student's cgpa, research score, name, country and province
     friend int compareCGPA (const Student* stu1, const Student* stu2);
-    friend int	compareResearchScore (const Student* stu1, const Student* stu2);
+    friend int compareResearchScore (const Student* stu1, const Student* stu2);
     friend int compareFirstName (const Student* stu1, const Student* stu2);
     friend int compareLastName (const Student* stu1, const Student* stu2);
 

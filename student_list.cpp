@@ -280,3 +280,119 @@ void intStudents::printList(){
 		tempIntStud = tempIntStud->nextInt;
 	}
 }
+
+/*
+ Student_Node::Student_Node(){}
+ Student_Node::Student_Node(Student new_st)
+ {
+     st = new_st;
+     next = NULL;
+ }
+ //constructor
+ Student_list::Student_list()
+ {
+     head = NULL;
+     tail = NULL;
+ }
+ //destructor
+ Student_list::~Student_list()
+ {
+     Student_Node *temp = head;
+     while (head != NULL)
+     {
+         temp = head;
+         head = head->next;
+         delete temp;
+     }
+ }
+ //getters
+ Student_Node* Student_list::getHead() const
+ {
+     return head;
+ }
+ Student_Node* Student_list::getTail() const
+ {
+     return tail;
+ }
+ void Student_list::insertall(Student_Node *new_st)
+ {
+     if (head == NULL)
+     {
+         head = new_st;
+         tail = new_st;
+     }
+     else
+     {
+         if (compareOverall_modified(head->st, new_st->st) == -1)
+         {
+             new_st->next = head;
+             head = new_st;
+         }
+         Student_Node *front = head;
+         Student_Node *back = head->next;
+         int instered = 0;
+         while (back != NULL)
+         {
+             if (compareOverall_modified(back->st, new_st->st) == 1)
+             {
+                 front = front->next;
+                 back = back->next;
+             }
+             else
+             {
+                 front->next = new_st;
+                 new_st->next = back;
+                 instered = 1;
+                 break;
+             }
+         }
+         if (instered == 0)
+         {
+             tail->next = new_st;
+             tail = new_st;
+         }
+     }
+ }
+ void Student_list::mergeList(domStudents &dList, intStudents &iList, Student_list &sList)
+ {
+     while (dList.getTop() != NULL)
+     {
+         string first_name = dList.getTop()->getFirstName();
+         string last_name = dList.getTop()->getLastName();
+         float cgpa = dList.getTop()->getCGPA();
+         int score = dList.getTop()->getResearchScore();
+         int stuID = dList.getTop()->getAppID();
+         Student new_st (first_name, last_name, cgpa, score, stuID);
+         Student_Node *ns = new Student_Node(new_st);
+         sList.insertall(ns);
+         //dList.deleteTop(dList);
+     }
+     while (iList.getTop() != NULL)
+     {
+         string first_name = iList.getTop()->getFirstName();
+         string last_name = iList.getTop()->getLastName();
+         float cgpa = iList.getTop()->getCGPA();
+         int score = iList.getTop()->getResearchScore();
+         int stuID = iList.getTop()->getAppID();
+         Student new_st (first_name, last_name, cgpa, score, stuID);
+         Student_Node *ns = new Student_Node(new_st);
+         sList.insertall(ns);
+         //dList.deleteTop(dList);
+     }
+      
+ }
+
+ //friend functions
+ int compareOverall_modified(const Student s1, const Student s2)
+ {
+     if (compareResearchScore_modified(s1, s2) == 1)
+         return 1;
+     if (compareResearchScore_modified(s1, s2) == -1)
+         return -1;
+     if (compareCPGA_modified(s1, s2) == 1)
+         return -1;
+     if (compareCPGA_modified(s1, s2) == -1)
+         return -1;
+     return 1;
+ }
+*/
