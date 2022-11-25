@@ -1,124 +1,126 @@
-//header file student.hpp to declare your classes
-#ifndef STUDENT
-#define STUDENT
+//
+//  student.hpp
+//  FinalProject
+//
+//  Created by Luo LanQing on 2022/11/24.
+//
+
+#ifndef student_hpp
+#define student_hpp
+
 #include <string> //you will have to use string in C++
-#include<iostream>
-class Student 
+#include <iostream>
+#include <string>
+#include <iomanip>
+
+using namespace std;
+class Student
 {
 public:
-	Student* next ;
-	//The constructor of student class
-	Student(std::string fn, std::string ln, float cgpa, int score, int APPID);
-	//The default constructor of student class
-	Student();
-    bool isValid() const;
-    //getter and setter of member variables
-    std::string getFirstName() const;
-    std::string getLastName() const;
+    Student* next ;
+    //Constructors
+    Student(string fn, string ln, float cgpa, int score, int APPID);
+    Student();
+    //Getters
+    string getFirstName() const;
+    string getLastName() const;
     float getCGPA() const;
     int getResearchScore() const;
     int getAppID() const;
-
-
-
-    void setFirstName(std::string fn);
-    void setLastName(std::string ln);
+    //Setters
+    void setFirstName(string fn);
+    void setLastName(string ln);
     void setCGPA(float cgpa);
     void setResearchScore(int score);
-    void setAppID(int APPID);
-
-
-
-    // compare student's cgpa, research score, name, country and province
-    friend int compareCGPA (const Student* stu1, const Student* stu2);
-    friend int compareResearchScore (const Student* stu1, const Student* stu2);
-    friend int compareFirstName (const Student* stu1, const Student* stu2);
-    friend int compareLastName (const Student* stu1, const Student* stu2);
-
-
+    //Other member functions
+    bool isValid() const;
+    void printOutStudent (ostream &outs);
+    friend ostream &operator<< (ostream &out, Student stu);
+    
 private:
-	std::string first_name;
-	std::string last_name;
-	float CGPA; 
-	int research_score;
-	int app_id;
-  
-};
-
-class ToeflScore
-{
-public:
-	//The constructor of ToeflScore Class
-	ToeflScore(int reading_para, int listening_para, int speaking_para, int writing_para);
-	//The default constructor of ToeflScore
-	ToeflScore();
-	//The Getter and Setter of ToeflScore
-	int getReading() const;
-	int getListening() const;
-	int getSpeaking() const;
-	int getWriting() const;
-	int getTotalScore() const;
-
-	void setReading(int read);
-	void setListening(int listen);
-	void setSpeaking(int speak);
-	void setWriting(int write);
-
-
-
-
-private:
-	int reading;
-	int listening;
-	int speaking;
-	int writing;
-	int total_score;
-
-
-};
-
-
-class InternationalStudent : public Student
-{
-public:
-	InternationalStudent* nextInt;
-	//The constructor of Inheritted class InternationalStudent Class
-	InternationalStudent(std::string fn, std::string ln, float cgpa, int score, int APPID, ToeflScore toefl_score, std::string country);
-	InternationalStudent();
-	ToeflScore getToeflScore() const;
-	std::string getCountry() const;
-	void setToeflScore(ToeflScore toefl_score);
-	void setCountry(std::string country);
-        
-	//compare
-	friend int compareCountry (const InternationalStudent* stu1, const InternationalStudent* stu2);
-	//overload operator
-	friend std::ostream& operator <<(std::ostream& outs, const InternationalStudent& interStu);
-private:
-	std::string country;
-	ToeflScore toefl_score;
-
+    string first_name;
+    string last_name;
+    float CGPA;
+    int research_score;
+    int app_id;
+    static int BaseID;//Every time a student class is created, BaseID += 1
 };
 
 class DomesticStudent : public Student
 {
 public:
-	DomesticStudent* nextDom;
-	//The constructor of Inheritted class DomesticlStudent Class
-	DomesticStudent(std::string fn, std::string ln, float cgpa, int score, int APPID, std::string province);
-	DomesticStudent();
-	std::string getProvince() const;
-	void setProvince(std::string province);
-       
-       //compare
-       friend int compareProvince (const DomesticStudent* stu1, const DomesticStudent* stu2);
-       //overload operator
-       friend std::ostream& operator <<(std::ostream& outs, const DomesticStudent& domesStu);
+    DomesticStudent* nextDom;
+    //Constructor
+    DomesticStudent(string fn, string ln, float cgpa, int score, int APPID, string province);
+    DomesticStudent();
+    //Getter
+    string getProvince() const;
+    //Setter
+    void setProvince(string province);
+    //Friend Functions
+    friend int compareProvince (const DomesticStudent* stu1, const DomesticStudent* stu2);
+    friend ostream& operator <<(ostream& outs, const DomesticStudent& domesStu);
+    
 private:
-	std::string province;
-
+    string province;
 };
-#endif//STUDENT
+
+class ToeflScore
+{
+public:
+    //The constructor of ToeflScore Class
+    ToeflScore(int reading_para, int listening_para, int speaking_para, int writing_para);
+    //The default constructor of ToeflScore
+    ToeflScore();
+    //Getters
+    int getReading() const;
+    int getListening() const;
+    int getSpeaking() const;
+    int getWriting() const;
+    int getTotalScore() const;
+    //Setters
+    void setReading(int read);
+    void setListening(int listen);
+    void setSpeaking(int speak);
+    void setWriting(int write);
+    
+private:
+    int reading;
+    int listening;
+    int speaking;
+    int writing;
+    int total_score;
+};
+
+class InternationalStudent : public Student
+{
+public:
+    InternationalStudent* nextInt;
+    //Constructors
+    InternationalStudent(string fn, string ln, float cgpa, int score, int APPID, ToeflScore toefl_score, string country);
+    InternationalStudent();
+    //Getters
+    ToeflScore getToeflScore() const;
+    string getCountry() const;
+    //Setters
+    void setToeflScore(ToeflScore toefl_score);
+    void setCountry(string country);
+    //overload operator
+    friend int compareCountry (const InternationalStudent* stu1, const InternationalStudent* stu2);
+    friend ostream& operator <<(ostream& outs, const InternationalStudent& interStu);
+    
+private:
+    string country;
+    ToeflScore toefl_score;
+};
 
 
-
+//Commen compare functions
+//when value 1 < value 2 return -1
+//when value 1 == value 2 return 0
+//when value 1 > value 2 return 1
+int compareCGPA(const Student &stu1, const Student &stu2);
+int compareResearchScore(const Student &stu1, const Student &stu2);
+int compareFirstName(const Student &stu1, const Student &stu2);
+int compareLastName(const Student &stu1, const Student &stu2);
+#endif /* student_hpp */
