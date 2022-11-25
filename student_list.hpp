@@ -13,7 +13,25 @@
 #include <iomanip>
 using namespace std;
 
-class domStudents
+
+class Students
+{
+public:
+    Students();
+
+
+
+
+
+private:
+    Student* TopStudent;
+    Student* lastStudent;
+
+
+};
+
+
+class domStudents: public Students
 {
 public:
     domStudents();
@@ -44,7 +62,7 @@ private:
 };
 
 
-class intStudents
+class intStudents: public Students
 {
 public:
     intStudents();

@@ -5,6 +5,16 @@
 #include <cmath>
 using namespace std;
 
+
+Students::Students(){
+    TopStudent = NULL;
+    lastStudent = NULL;
+
+}
+
+
+
+
 domStudents::domStudents(){
     TopStudent = NULL;
     lastStudent = NULL;
