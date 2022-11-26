@@ -279,6 +279,62 @@ void domStudents:: Search (domStudents head,string FirstName, string LastName)
      }
    }
 
+// innovation 2
+void domStudents::requireDomCGPA(domStudents head, double target)
+{
+     DomesticStudent* here = head.getTop();
+   int count =0; // Flag to recall the number of targets exist in the linked list
+   if(here == NULL)
+   {
+      cout << "The object is empty."<< endl;
+   }
+   else
+   {
+     // Search whole linked list to check if or not have target
+     while (here != NULL)
+     {
+            if( here->getCGPA() > target )// The condtion to judge if or not exist the required target
+           {
+              count =count +1;
+              cout << *here << endl;
+           }
+          here = here->nextDom;
+     }
+     if ( count ==0 )
+     {
+       cout<<"The domestic students satisfied the requirements do noe exist." <<endl;
+     }
+   }
+}
+
+//innovation 2
+void domStudents::requireDomScore(domStudents head, int target)
+{
+    DomesticStudent* here = head.getTop();
+   int count =0; // Flag to recall the number of targets exist in the linked list
+   if(here == NULL)
+   {
+      cout << "The object is empty."<< endl;
+   }
+   else
+   {
+     // Search whole linked list to check if or not have target
+     while (here != NULL)
+     {
+            if( here->getResearchScore() > target )// The condtion to judge if or not exist the required target
+           {
+              count =count +1;
+              cout << *here << endl;
+           }
+          here = here->nextDom;
+     }
+     if ( count ==0 )
+     {
+       cout<<"The domestic students satisfied the requirements do noe exist." <<endl;
+     }
+   }
+}
+
 // Based on the definition of order to insert new student to  the student's data
 void domStudents::insert(domStudents dom_list, DomesticStudent* stud){
 
