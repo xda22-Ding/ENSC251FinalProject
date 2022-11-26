@@ -50,6 +50,10 @@ public:
     void insert(domStudents dom_list, DomesticStudent* stud);
     int totalStudent();
     float rankStudent(DomesticStudent* objectStud);
+    
+    //Innovation 2
+    void requireDomCGPA(domStudents head, double target);
+    void requireDomScore(domStudents head, int target);
 private:
     DomesticStudent* TopStudent;
     DomesticStudent* lastStudent;
