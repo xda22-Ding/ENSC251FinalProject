@@ -57,8 +57,8 @@ public:
     
     void deleteDom(string fn,string ln);
     void deleteDom();
-	//check input case
-	string checKDomInput(string n);
+    //check input case
+    string checKDomInput(string n);
     
 private:
     DomesticStudent* TopStudent;
@@ -93,8 +93,8 @@ public:
     
     void deleteInt(string fn,string ln);
     void deleteInt();
-	//check input case
-	string checKIntInput(string n);
+    //check input case
+    string checKIntInput(string n);
     
 private:
     InternationalStudent* TopIntStudent;
