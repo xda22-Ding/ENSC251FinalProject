@@ -136,7 +136,7 @@ int compareProvince (const DomesticStudent* stu1, const DomesticStudent* stu2)
 }
 ostream& operator <<(std::ostream& outs, const DomesticStudent& domesStu)
 {
-    outs << "Domestic Student : " <<domesStu.getFirstName() << " "<< domesStu.getLastName() <<"is from " << domesStu.getProvince() << ". " <<"CGPA : " <<domesStu.getCGPA() << " Research Score: " << domesStu.getResearchScore() << endl;
+    outs << "Domestic Student : " <<domesStu.getFirstName() << " "<< domesStu.getLastName() <<" is from " << domesStu.getProvince() << ". " <<"CGPA : " <<domesStu.getCGPA() << " Research Score: " << domesStu.getResearchScore() << endl;
         return outs;
 }
 
@@ -235,7 +235,7 @@ int compareCountry (const InternationalStudent* stu1, const InternationalStudent
 }
 ostream& operator <<(std::ostream& outs, const InternationalStudent& interStu)
 {
-    outs << "International Student : " <<interStu.getFirstName() << " "<< interStu.getLastName() <<"is from " << interStu.getCountry() << ". " <<"CGPA : " <<interStu.getCGPA() << " Research Score: " << interStu.getResearchScore() <<" Toefl Score: reading: " <<interStu.getToeflScore().getReading() <<"; listening: "<<interStu.getToeflScore().getListening()<<"; Speaking: "<<interStu.getToeflScore().getSpeaking()<<"; Writing: "<<interStu.getToeflScore().getWriting()<<"."<< endl;
+    outs << "International Student : " <<interStu.getFirstName() << " "<< interStu.getLastName() <<" is from " << interStu.getCountry() << ". " <<"CGPA : " <<interStu.getCGPA() << " Research Score: " << interStu.getResearchScore() <<" Toefl Score: reading: " <<interStu.getToeflScore().getReading() <<"; listening: "<<interStu.getToeflScore().getListening()<<"; Speaking: "<<interStu.getToeflScore().getSpeaking()<<"; Writing: "<<interStu.getToeflScore().getWriting()<<"."<< endl;
 
      return outs;
 }
