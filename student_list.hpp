@@ -1,10 +1,3 @@
-//
-//  student_list.hpp
-//  FinalProject
-//
-//  Created by Luo LanQing on 2022/11/24.
-//
-
 #ifndef student_list_hpp
 #define student_list_hpp
 
@@ -17,17 +10,19 @@ using namespace std;
 class Students
 {
 public:
+    //Constructor
     Students();
-
-
-
-
-
+    //getter
+    Student* getTop();
+    Student* getlast();
+    
+    //Other member functions
+    void insertMix(Student* stud);
+    void searchThreshold(float cgpaThreshold, int researchThreshold);
+    virtual void printList();
 private:
     Student* TopStudent;
     Student* lastStudent;
-
-
 };
 
 
@@ -71,7 +66,7 @@ public:
     void printList();
     
     InternationalStudent* getTop();
-        InternationalStudent* getlast();
+    InternationalStudent* getlast();
     
     //This Search Function is to find some international students satisfied requirements of CGPA   2 b
     void Search(intStudents head, double target);
@@ -90,7 +85,17 @@ private:
     InternationalStudent* lastIntStudent;
     
 };
-/*
+//Other functions
+//Comapre Research -> CGPA
+//1>2 return 1; 1<2 return -1;
+int compareOverall (const Student s1, const Student s2);
+//Merge function, merge one international student and one domestic student and return a student linked list
+Students mergeList(domStudents &dList, intStudents &iList);
+
+
+
+
+
  class Student_Node
  {
  public:
@@ -122,6 +127,5 @@ private:
  };
  //friend functions
  int compareOverall_modified(const Student s1, const Student s2);
- */
 
 #endif /* student_list_hpp */

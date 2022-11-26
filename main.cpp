@@ -257,4 +257,13 @@ int main(){
          tempStud = tempStud->nextDom;
 
      }
-     cout << "rank " << stuList.rankStudent(tempStud) << endl;}
+     cout << "rank " << stuList.rankStudent(tempStud) << endl;
+    
+    Students sList;
+    sList = mergeList(stuList, intList);
+    sList.printList();
+    cout << "Check search Threshold function." << endl;
+    sList.searchThreshold(0.0, 99);
+    
+    return 0;
+}

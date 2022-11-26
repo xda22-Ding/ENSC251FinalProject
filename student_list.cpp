@@ -5,16 +5,98 @@
 #include <cmath>
 using namespace std;
 
+/*--------------Student Linked List----------------*/
 
-Students::Students(){
+Students::Students()
+{
     TopStudent = NULL;
     lastStudent = NULL;
+}
+Student* Students:: getTop()
+{
+    return TopStudent;
+}
+Student* Students:: getlast()
+{
+    return lastStudent;
+}
+void Students::insertMix(Student* stud)
+{
+    if(TopStudent==NULL){
+        TopStudent = stud;
+        lastStudent = stud;
+    }
+    else{
+        Student* tempStud = TopStudent;
+        if(compareResearchScore(*stud,*tempStud) == 1){
+            stud->next = tempStud;
+            TopStudent = stud;
+            return;
+        }
+        else if(compareResearchScore(*stud,*tempStud) == 3){
+            if(compareCGPA(*stud,*tempStud) == 1){
+                stud->next = tempStud;
+                TopStudent = stud;
+                return;
+            }
+        }
+
+
+
+        while(tempStud != lastStudent ){
+            if(compareResearchScore(*stud,*tempStud->next) == 1){
+                stud->next = tempStud->next;
+                tempStud->next = stud;
+                return;
+            }
+            else if(compareResearchScore(*stud,*tempStud->next) == 3){
+                if(compareCGPA(*stud,*tempStud->next) == 1){
+                    stud->next = tempStud->next;
+                    tempStud->next = stud;
+                    return;
+                }
+            }
+            tempStud = tempStud -> next;
+        }
+        if(tempStud == lastStudent){
+            tempStud->next = stud;
+            lastStudent = stud;
+        }
+
+    }
 
 }
+//This function search the threshold of cpga and research socre and print out the valid results.
+void Students::searchThreshold(float cgpaThreshold, int researchThreshold)
+{
+    Student* tempptr = TopStudent;
+    while (tempptr != NULL)
+    {
+        if (tempptr->getResearchScore() >= researchThreshold)
+        {
+            if (tempptr->getCGPA() >= tempptr->getCGPA())
+            {
+                cout << *tempptr << endl;
+                tempptr = tempptr->next;
+            }
+        }
+        else
+            return;
+    }
+}
+void Students::printList()
+{
+    Student* tempStud = TopStudent;
+    while(tempStud != NULL)
+    {
+        cout << *tempStud << endl;
+        tempStud = tempStud->next;
+    }
+}
 
+/*--------------Student Linked List----------------*/
 
-
-
+/*------------Domestic Student Linked List----------------*/
 domStudents::domStudents(){
     TopStudent = NULL;
     lastStudent = NULL;
@@ -69,8 +151,6 @@ void domStudents::insert(DomesticStudent* stud){
                     }
                 }
             }
-
-
             tempStud = tempStud -> nextDom;
         }
         if(tempStud == lastStudent){
@@ -99,6 +179,7 @@ DomesticStudent* domStudents:: getTop( )
 {
    return lastStudent;
 }
+
 
 // To print all information of domestic student with the same CGPA(target)
  void domStudents:: Search(domStudents head, double target)
@@ -262,9 +343,9 @@ void domStudents::insert(domStudents dom_list, DomesticStudent* stud){
     }
 
 }
+/*------------Domestic Student Linked List----------------*/
 
-
-
+/*------------International Student Linked List----------------*/
 intStudents::intStudents(){
     TopIntStudent = NULL;
     lastIntStudent = NULL;
@@ -543,120 +624,25 @@ int intStudents::totalStudent(){
     }
 
     return total;
-
 }
-/*
- Student_Node::Student_Node(){}
- Student_Node::Student_Node(Student new_st)
- {
-     st = new_st;
-     next = NULL;
- }
- //constructor
- Student_list::Student_list()
- {
-     head = NULL;
-     tail = NULL;
- }
- //destructor
- Student_list::~Student_list()
- {
-     Student_Node *temp = head;
-     while (head != NULL)
-     {
-         temp = head;
-         head = head->next;
-         delete temp;
-     }
- }
- //getters
- Student_Node* Student_list::getHead() const
- {
-     return head;
- }
- Student_Node* Student_list::getTail() const
- {
-     return tail;
- }
- void Student_list::insertall(Student_Node *new_st)
- {
-     if (head == NULL)
-     {
-         head = new_st;
-         tail = new_st;
-     }
-     else
-     {
-         if (compareOverall_modified(head->st, new_st->st) == -1)
-         {
-             new_st->next = head;
-             head = new_st;
-         }
-         Student_Node *front = head;
-         Student_Node *back = head->next;
-         int instered = 0;
-         while (back != NULL)
-         {
-             if (compareOverall_modified(back->st, new_st->st) == 1)
-             {
-                 front = front->next;
-                 back = back->next;
-             }
-             else
-             {
-                 front->next = new_st;
-                 new_st->next = back;
-                 instered = 1;
-                 break;
-             }
-         }
-         if (instered == 0)
-         {
-             tail->next = new_st;
-             tail = new_st;
-         }
-     }
- }
- void Student_list::mergeList(domStudents &dList, intStudents &iList, Student_list &sList)
- {
-     while (dList.getTop() != NULL)
-     {
-         string first_name = dList.getTop()->getFirstName();
-         string last_name = dList.getTop()->getLastName();
-         float cgpa = dList.getTop()->getCGPA();
-         int score = dList.getTop()->getResearchScore();
-         int stuID = dList.getTop()->getAppID();
-         Student new_st (first_name, last_name, cgpa, score, stuID);
-         Student_Node *ns = new Student_Node(new_st);
-         sList.insertall(ns);
-         //dList.deleteTop(dList);
-     }
-     while (iList.getTop() != NULL)
-     {
-         string first_name = iList.getTop()->getFirstName();
-         string last_name = iList.getTop()->getLastName();
-         float cgpa = iList.getTop()->getCGPA();
-         int score = iList.getTop()->getResearchScore();
-         int stuID = iList.getTop()->getAppID();
-         Student new_st (first_name, last_name, cgpa, score, stuID);
-         Student_Node *ns = new Student_Node(new_st);
-         sList.insertall(ns);
-         //dList.deleteTop(dList);
-     }
-      
- }
 
- //friend functions
- int compareOverall_modified(const Student s1, const Student s2)
- {
-     if (compareResearchScore_modified(s1, s2) == 1)
-         return 1;
-     if (compareResearchScore_modified(s1, s2) == -1)
-         return -1;
-     if (compareCPGA_modified(s1, s2) == 1)
-         return 1;
-     if (compareCPGA_modified(s1, s2) == -1)
-         return -1;
-     return 1;
- }
-*/
+
+//Merge function, merge one international student and one domestic student and return a student linked list
+Students mergeList(domStudents &dList, intStudents &iList)
+{
+    Students stuList;
+    DomesticStudent* dom_ptr = dList.getTop();
+    InternationalStudent* int_ptr = iList.getTop();
+    while (dom_ptr != NULL)
+    {
+        stuList.insertMix(dom_ptr);
+        dom_ptr = dom_ptr->nextDom;
+    }
+    while (int_ptr != NULL)
+    {
+        stuList.insertMix(int_ptr);
+        int_ptr = int_ptr->nextInt;
+    }
+    return stuList;
+}
+
