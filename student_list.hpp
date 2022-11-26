@@ -54,6 +54,12 @@ public:
     //innovation 2
     void requireDomCGPA(domStudents head, double target);
     void requireDomScore(domStudents head, int target);
+    
+    void deleteDom(string fn,string ln);
+    void deleteDom();
+	//check input case
+	string checKDomInput(string n);
+    
 private:
     DomesticStudent* TopStudent;
     DomesticStudent* lastStudent;
@@ -84,6 +90,12 @@ public:
     //This function insert a new node in the linked list based on the required order 2d
     void insert( intStudents int_list ,  InternationalStudent* stud);
     int totalStudent();
+    
+    void deleteInt(string fn,string ln);
+    void deleteInt();
+	//check input case
+	string checKIntInput(string n);
+    
 private:
     InternationalStudent* TopIntStudent;
     InternationalStudent* lastIntStudent;
