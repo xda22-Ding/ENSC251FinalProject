@@ -51,7 +51,7 @@ public:
     int totalStudent();
     float rankStudent(DomesticStudent* objectStud);
     
-    //Innovation 2
+    //innovation 2
     void requireDomCGPA(domStudents head, double target);
     void requireDomScore(domStudents head, int target);
 private:
