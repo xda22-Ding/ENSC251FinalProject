@@ -93,6 +93,11 @@ public:
     
     void deleteInt(string fn,string ln);
     void deleteInt();
+    
+    //innovation 2
+    void requireIntCGPA(intStudents head, double target);
+    void requireIntScore(intStudents head, int target);
+    
     //check input case
     string checKIntInput(string n);
     
