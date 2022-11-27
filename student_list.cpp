@@ -895,4 +895,58 @@ string intStudents::checKIntInput(string name){
 
   return name;
 }
+// innovation2
+void intStudents::requireIntCGPA(intStudents head, double target)
+{
+   InternationalStudent* here = head.getTop();
+   int count =0; // Flag to recall the number of targets exist in the linked list
+   if(here == NULL)
+   {
+      cout << "The object is empty."<< endl;
+   }
+   else
+   {
+     // Search whole linked list to check if or not have target
+     while (here != NULL)
+     {
+          if( here->getCGPA() > target )// The condtion to judge if or not exist the required target
+           {
+              count =count +1;
+              cout << *here << endl;
+           }
+          here = here->nextInt;
+     }
+     if ( count ==0 )
+     {
+       cout<<"The domestic students satisfied the requirements do noe exist." <<endl;
+     }
+   }
+}
 
+// innovation2
+void intStudents::requireIntScore(intStudents head, int target)
+{
+    InternationalStudent* here = head.getTop();
+   int count =0; // Flag to recall the number of targets exist in the linked list
+   if(here == NULL)
+   {
+      cout << "The object is empty."<< endl;
+   }
+   else
+   {
+     // Search whole linked list to check if or not have target
+     while (here != NULL)
+     {
+            if( here->getResearchScore() > target )// The condtion to judge if or not exist the required target
+           {
+              count =count +1;
+              cout << *here << endl;
+           }
+          here = here->nextInt;
+     }
+     if ( count ==0 )
+     {
+       cout<<"The domestic students satisfied the requirements do noe exist." <<endl;
+     }
+   }
+}
