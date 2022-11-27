@@ -232,7 +232,26 @@ int main(){
 
 
 
-
+     /*** //User id password
+	int id;
+	int pw;
+	
+	cout<<"ID: ";
+	cin >> id;
+	cout<<"Password: ";
+	cin >> pw;
+        if (intList.isVerified(id, pw)) {
+	 intList.Search(intList, id);
+	 cout << "Application Status: Processing" << endl;
+	 
+        }
+	else{
+	 
+	 intList.Search(intList, id);
+	 cout << "Applicaiton Status: Fail" << endl;
+	
+	}
+***/	
 
 
      cout << "international students: " << endl;
