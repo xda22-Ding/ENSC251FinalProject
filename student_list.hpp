@@ -63,6 +63,8 @@ public:
     // Part2 3
     void Check_Provence(domStudents head);
     
+    //innovation 3 
+    bool isVerified(int ID, int PW) const;
 private:
     DomesticStudent* TopStudent;
     DomesticStudent* lastStudent;
@@ -106,6 +108,9 @@ public:
     
     //Part2 3
     void Check_Country(intStudents head);
+    
+    //innovation 3 
+    bool isVerified(int ID, int PW) const;
     
 private:
     InternationalStudent* TopIntStudent;
