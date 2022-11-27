@@ -223,7 +223,7 @@ void domStudents::Search(domStudents head, int target)
    {
       if (target > 100000) // To check if or not exist requied application ID in the linked list
         {
-       while (here != head.getlast())
+       while (here != NULL)
         {
            if(here->getAppID() == target)
                    {
