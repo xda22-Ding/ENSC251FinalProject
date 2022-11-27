@@ -17,7 +17,7 @@ Student::Student()
     BaseID++;
     next = NULL;
 }
-Student::Student(string fn, string ln, float cgpa, int score, int APPID)
+Student::Student(string fn, string ln, float cgpa, int score)
 {
     setFirstName(fn);
     setLastName(ln);
@@ -107,7 +107,7 @@ DomesticStudent::DomesticStudent()
 {
     nextDom = NULL;
 }
-DomesticStudent::DomesticStudent(string fn, string ln, float cgpa, int score, int APPID, string province):Student(fn, ln, cgpa, score, APPID)
+DomesticStudent::DomesticStudent(string fn, string ln, float cgpa, int score,  string province):Student(fn, ln, cgpa, score)
 {
     this->province = province;
     nextDom = NULL;
@@ -199,7 +199,7 @@ InternationalStudent::InternationalStudent()
 {
     nextInt = NULL;
 }
-InternationalStudent::InternationalStudent(string fn, string ln, float cgpa, int score, int APPID, ToeflScore toefl_score, string country):Student(fn, ln, cgpa, score, APPID)
+InternationalStudent::InternationalStudent(string fn, string ln, float cgpa, int score,  ToeflScore toefl_score, string country):Student(fn, ln, cgpa, score)
 {
     setToeflScore(toefl_score);
     setCountry(country);

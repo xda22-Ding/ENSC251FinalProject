@@ -19,7 +19,7 @@ class Student
 public:
     Student* next ;
     //Constructors
-    Student(string fn, string ln, float cgpa, int score, int APPID);
+    Student(string fn, string ln, float cgpa, int score);
     Student();
     //Getters
     string getFirstName() const;
@@ -51,7 +51,7 @@ class DomesticStudent : public Student
 public:
     DomesticStudent* nextDom;
     //Constructor
-    DomesticStudent(string fn, string ln, float cgpa, int score, int APPID, string province);
+    DomesticStudent(string fn, string ln, float cgpa, int score,  string province);
     DomesticStudent();
     //Getter
     string getProvince() const;
@@ -97,7 +97,7 @@ class InternationalStudent : public Student
 public:
     InternationalStudent* nextInt;
     //Constructors
-    InternationalStudent(string fn, string ln, float cgpa, int score, int APPID, ToeflScore toefl_score, string country);
+    InternationalStudent(string fn, string ln, float cgpa, int score,  ToeflScore toefl_score, string country);
     InternationalStudent();
     //Getters
     ToeflScore getToeflScore() const;
