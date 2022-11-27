@@ -82,7 +82,7 @@ public:
     InternationalStudent* getlast();
     
     //This Search Function is to find some international students satisfied requirements of CGPA   2 b
-    void Search(intStudents head, double target);
+    void Search(intStudents head, float target);
     
     //This Search Function is to find some international students satisfied requirements of application ID or research score 2b
     void Search(intStudents head, int target);
