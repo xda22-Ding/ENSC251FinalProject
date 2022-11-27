@@ -20,6 +20,7 @@ public:
     float getCGPA() const;
     int getResearchScore() const;
     int getAppID() const;
+    int getPassW() const;
     //Setters
     void setFirstName(string fn);
     void setLastName(string ln);
@@ -38,6 +39,8 @@ private:
     int research_score;
     int app_id;
     static int BaseID;//Every time a student class is created, BaseID += 1
+    int passW;
+    static int BasePassW;
 };
 
 class DomesticStudent : public Student
