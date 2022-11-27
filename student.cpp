@@ -1,6 +1,7 @@
 #include "student.hpp"
 /* ----------------------------Student Class------------------------------*/
 int Student::BaseID = 20220000;
+int Student::BasePassW = 22220000;
 //Constructor
 Student::Student()
 {
@@ -8,6 +9,8 @@ Student::Student()
     research_score = 0;
     app_id = BaseID;
     BaseID++;
+    passW = BasePassW;
+    BasePassW++;
     next = NULL;
 }
 Student::Student(string fn, string ln, float cgpa, int score)
@@ -18,6 +21,8 @@ Student::Student(string fn, string ln, float cgpa, int score)
     setResearchScore(score);
     app_id = BaseID;
     BaseID++;
+    passW = BasePassW;
+    BasePassW++;
     next = NULL;
     isValid();
 }
@@ -41,6 +46,10 @@ float Student::getCGPA() const
 int Student::getAppID() const
 {
     return app_id;
+}
+int Student::getPassW() const
+{
+    return passW;
 }
 //Setters
 void Student::setFirstName(string fn)
