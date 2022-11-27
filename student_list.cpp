@@ -631,7 +631,7 @@ InternationalStudent* intStudents:: getTop( )
    return lastIntStudent;
 }
 
-void intStudents:: Search(intStudents head, double target)
+void intStudents:: Search(intStudents head, float target)
 {
    InternationalStudent* here = head.getTop();
    int count =0;
