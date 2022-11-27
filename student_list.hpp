@@ -60,6 +60,9 @@ public:
     //check input case
     string checKDomInput(string n);
     
+    // Part2 3
+    void Check_Provence(domStudents head);
+    
 private:
     DomesticStudent* TopStudent;
     DomesticStudent* lastStudent;
@@ -100,6 +103,9 @@ public:
     
     //check input case
     string checKIntInput(string n);
+    
+    //Part2 3
+    void Check_Country(intStudents head);
     
 private:
     InternationalStudent* TopIntStudent;
