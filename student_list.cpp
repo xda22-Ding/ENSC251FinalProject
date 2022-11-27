@@ -376,6 +376,19 @@ string domStudents::checKDomInput(string name){
   return name;
 }
 
+//check if password mathces ID (innovation3)
+bool domStudents::isVerified(int ID, int PW) const{
+    DomesticStudent* Stud = TopStudent;
+    while(Stud != lastStudent)
+    {
+        if(Stud->getAppID() == ID && Stud->getPassW() == PW){
+		return true;
+        }
+	Stud = Stud->nextDom;
+    }
+    return false;
+}
+
 // Part2 3
 void domStudents::Check_Provence(domStudents head)
 {
@@ -941,6 +954,19 @@ string intStudents::checKIntInput(string name){
   name[0] = toupper(name[0]);
 
   return name;
+}
+
+//check if password mathces ID (innovation3)
+bool intStudents::isVerified(int ID, int PW) const{
+    InternationalStudent* Stud = TopIntStudent;
+    while(Stud != lastIntStudent)
+    {
+        if(Stud->getAppID() == ID && Stud->getPassW() == PW){
+		return true;
+        }
+	Stud = Stud->nextInt;
+    }
+    return false;
 }
 
 // Part2 3
