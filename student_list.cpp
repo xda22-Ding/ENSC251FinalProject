@@ -376,6 +376,53 @@ string domStudents::checKDomInput(string name){
   return name;
 }
 
+// Part2 3
+void domStudents::Check_Provence(domStudents head)
+{
+    DomesticStudent* here = head.getTop();
+    bool flag =false;
+   int count =0; //Flag to recall the number of targets exist in the linked list
+   if(here == NULL)
+   {
+     cout << "The object is empty."<< endl;
+   }
+   else
+   {
+    while (here != NULL)
+      {
+        int len;
+        string tempStr, provenceStr;
+     
+        provenceStr = here->getProvince();
+        for ( len  = 0; len < provenceStr.length(); len++)
+        {
+               provenceStr[len]=toupper(provenceStr[len]);
+        }
+        tempStr = provenceStr;
+        if ((tempStr == "NL") || (tempStr == "NS") || (tempStr == "NB") || (tempStr == "PE") || 
+             (tempStr == "QC") || (tempStr == "ON") || (tempStr == "MB") || (tempStr == "SK") || 
+             (tempStr == "AB") || (tempStr == "BC") || (tempStr == "YT") || (tempStr == "NT") || (tempStr == "NU"))
+           {
+            flag = false;
+           }
+        else
+        {
+            cout<< "The item contains a wrong record." << endl;
+            cout << *here << endl;
+            flag= true;
+            exit(1);
+        }
+       
+        here = here->nextDom;
+    }
+ if (flag == false)
+        {
+            cout <<" All records about the proviences are correct."<< endl;
+        }
+
+   }  
+}
+
 // innovation 2
 void domStudents::requireDomCGPA(domStudents head, double target)
 {
@@ -894,6 +941,194 @@ string intStudents::checKIntInput(string name){
   name[0] = toupper(name[0]);
 
   return name;
+}
+
+// Part2 3
+void intStudents::Check_Country(intStudents head)
+{
+    InternationalStudent* here = head.getTop();
+    bool flag =false;
+   int count =0; //Flag to recall the number of targets exist in the linked list
+   if(here == NULL)
+   {
+     cout << "The object is empty."<< endl;
+   }
+   else
+   {
+     while (here != NULL)
+       {
+          int len;
+          string tempStr, CountryStr;
+     
+          CountryStr = here->getCountry();
+          for ( len  = 0; len < CountryStr.length(); len++)
+           {
+              CountryStr[len]=toupper(CountryStr[len]);
+           }
+          int C_Number=0;
+          int A_Number =0;
+          int N_Number =0;
+          int D_Number =0;
+          if ((CountryStr.length()==6) && CountryStr != "CANADA" )
+              {   
+                for ( len  = 0; len < CountryStr.length(); len++)
+                 {
+                  if ( CountryStr[len]== 'C')
+                    {
+                     C_Number = C_Number+1;
+                    }
+                   else if ( CountryStr[len]== 'A')
+                   {   
+                    A_Number = A_Number+1;
+                   }
+                   else if ( CountryStr[len]== 'D')
+                   {       
+                    D_Number = D_Number+1;  
+                   }
+                   else if ( CountryStr[len]== 'N')
+                   {
+                       
+                    N_Number = N_Number+1;
+                   
+                   }
+                   if (( N_Number==1) && (D_Number==1) && (A_Number==3) && (C_Number==1))
+                   {
+                    CountryStr = "CANADA";
+                    cout << "It's a typo and fixes it to Canada"<< endl;
+                    cout<< *here << endl;
+                   }
+               }
+            }
+            int I_Number=0;
+            int R_Number =0;
+            A_Number =0;
+            N_Number =0;
+            if ((CountryStr.length()==4) && CountryStr != "IRAN" )
+             {
+                 for ( len  = 0; len < CountryStr.length(); len++)
+                 {
+                   if ( CountryStr[len]== 'I')
+                   {   
+                    I_Number = I_Number+1;
+                   }
+                   else if ( CountryStr[len]== 'R')
+                   {   
+                    R_Number = R_Number+1;
+                   }
+                   else if ( CountryStr[len]== 'A')
+                   {      
+                    A_Number = A_Number+1;  
+                   }
+                   else if ( CountryStr[len]== 'N')
+                   {      
+                    N_Number = N_Number+1;   
+                   }
+                   if (( I_Number==1) && (R_Number==1) && (N_Number==1) && (N_Number==1))
+                   {
+                       CountryStr = "IRAN";
+                       cout << "It's a typo and fixes it to Iran"<< endl;
+                       cout<< *here << endl;
+                   }
+               }
+           }
+            C_Number = 0;
+            int H_Number = 0;
+            I_Number = 0;
+            N_Number = 0;
+            A_Number = 0;
+            D_Number = 0;
+            int K_Number = 0;
+            int O_Number = 0;
+            R_Number = 0;
+            int E_Number=0;
+            if ((CountryStr.length()==5) && (CountryStr != "CHINA") && (CountryStr != "INDIA")&& (CountryStr != "KOREA") )
+           {
+                 for ( len  = 0; len < CountryStr.length(); len++)
+               {
+                   if ( CountryStr[len]== 'C')
+                   {   
+                    C_Number = C_Number+1;
+                   }
+                   else if ( CountryStr[len]== 'H')
+                   {   
+                    H_Number = H_Number+1;
+                   }
+                   else if ( CountryStr[len]== 'I')
+                   {       
+                    I_Number = I_Number+1;  
+                   }
+                   else if ( CountryStr[len]== 'N')
+                   {                       
+                    N_Number = N_Number+1;                   
+                   }
+                    else if ( CountryStr[len]== 'A')
+                   {               
+                    A_Number = A_Number+1;   
+                   }
+                    else if ( CountryStr[len]== 'D')
+                   {      
+                    D_Number = D_Number+1;   
+                   }
+                   else if ( CountryStr[len]== 'K')
+                   {      
+                    K_Number = K_Number+1;   
+                   }
+                    else if ( CountryStr[len]== 'O')
+                   {      
+                    O_Number = O_Number+1;  
+                   }
+                    else if ( CountryStr[len]== 'R')
+                   {      
+                    R_Number = R_Number+1;   
+                   }
+                   else if ( CountryStr[len]== 'E')
+                   {      
+                    E_Number = E_Number+1;   
+                   }
+
+                   if (( C_Number==1) && (H_Number==1) && (I_Number==1) && (N_Number==1) && (A_Number==1) )
+                   {
+                       CountryStr = "CHINA";
+                       cout << "It's a typo " << here->getCountry()   <<"  and fixes it to China"<< endl;
+                       cout<< *here << endl;
+                   }
+
+                   if (( I_Number==2) && (N_Number==1) && (D_Number==1) && (A_Number==1) )
+                   {
+                       CountryStr = "INDIA";
+                       cout << "It's a typo "<<  here->getCountry()  <<" and fixes it to India"<< endl;
+                       cout<< *here << endl;
+                   }
+                  if (( K_Number==1) && (O_Number==1) && (R_Number==1) && (E_Number==1)&& (A_Number==1)  )
+                   {
+                       CountryStr = "KOERA";
+                       cout << "It's a typo " << here->getCountry()  <<" and fixes it to Korea"<< endl;
+                       cout<< *here << endl;
+                   }
+
+                }
+           }           
+           tempStr = CountryStr;
+           if ((tempStr == "CHINA") || (tempStr == "CANADA") || (tempStr == "INDIA") || (tempStr == "IRAN") || 
+             (tempStr == "KOREA"))
+             {
+               flag = false;
+              }
+           else
+            {
+               cout<< "The item contains a wrong record." << endl;
+               cout << *here << endl;
+               flag= true;
+               exit(1);
+            }
+       
+            here = here->nextInt;
+     }
+     if (flag == false)
+        {
+            cout <<" All records about the Countries are correct."<< endl;
+        }
+   }  
 }
 // innovation2
 void intStudents::requireIntCGPA(intStudents head, double target)
