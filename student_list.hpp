@@ -38,7 +38,7 @@ public:
     DomesticStudent* getlast();
     
     //This Search Function is to find some domestic students satisfied requirements of CGPA   2 b
-    void Search(domStudents head, double target);
+    void Search(domStudents head, float target);
 
     //This Search Function is to find some domestic students satisfied requirements of application ID or research score 2b
     void Search(domStudents head, int target);
@@ -52,13 +52,16 @@ public:
     float rankStudent(DomesticStudent* objectStud);
     
     //innovation 2
-    void requireDomCGPA(domStudents head, double target);
+    void requireDomCGPA(domStudents head, float target);
     void requireDomScore(domStudents head, int target);
     
     void deleteDom(string fn,string ln);
     void deleteDom();
     //check input case
     string checKDomInput(string n);
+    
+    // Part2 3
+    void Check_Provence(domStudents head);
     
 private:
     DomesticStudent* TopStudent;
@@ -79,7 +82,7 @@ public:
     InternationalStudent* getlast();
     
     //This Search Function is to find some international students satisfied requirements of CGPA   2 b
-    void Search(intStudents head, double target);
+    void Search(intStudents head, float target);
     
     //This Search Function is to find some international students satisfied requirements of application ID or research score 2b
     void Search(intStudents head, int target);
@@ -93,8 +96,16 @@ public:
     
     void deleteInt(string fn,string ln);
     void deleteInt();
+    
+    //innovation 2
+    void requireIntCGPA(intStudents head, float target);
+    void requireIntScore(intStudents head, int target);
+    
     //check input case
     string checKIntInput(string n);
+    
+    //Part2 3
+    void Check_Country(intStudents head);
     
 private:
     InternationalStudent* TopIntStudent;
@@ -108,40 +119,5 @@ int compareOverall (const Student s1, const Student s2);
 //Merge function, merge one international student and one domestic student and return a student linked list
 Students mergeList(domStudents &dList, intStudents &iList);
 
-
-
-
-
- class Student_Node
- {
- public:
-     Student st;
-     Student_Node* next;
-     Student_Node(Student new_st);
-     Student_Node();
- };
- class Student_list
- {
- public:
-     //constructor
-     Student_list();
-     
-     //destructr
-     ~Student_list();
-     
-     //getter
-     Student_Node* getHead() const;
-     Student_Node* getTail() const;
-     
-     //other member functions
-     void insertall(Student_Node* new_st);
-     void mergeList(domStudents &dList, intStudents &iList, Student_list &sList);
-     
- private:
-     Student_Node* head;
-     Student_Node* tail;
- };
- //friend functions
- int compareOverall_modified(const Student s1, const Student s2);
 
 #endif /* student_list_hpp */

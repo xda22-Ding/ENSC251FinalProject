@@ -64,6 +64,7 @@ void Students::insertMix(Student* stud)
         }
 
     }
+    lastStudent->next = NULL;
 
 }
 //This function search the threshold of cpga and research socre and print out the valid results.
@@ -74,14 +75,12 @@ void Students::searchThreshold(float cgpaThreshold, int researchThreshold)
     {
         if (tempptr->getResearchScore() >= researchThreshold)
         {
-            if (tempptr->getCGPA() >= tempptr->getCGPA())
-            {
+            if (tempptr->getCGPA() >= cgpaThreshold)
                 cout << *tempptr << endl;
-                tempptr = tempptr->next;
-            }
         }
         else
             return;
+        tempptr = tempptr->next;
     }
 }
 void Students::printList()
@@ -182,7 +181,7 @@ DomesticStudent* domStudents:: getTop( )
 
 
 // To print all information of domestic student with the same CGPA(target)
- void domStudents:: Search(domStudents head, double target)
+ void domStudents:: Search(domStudents head, float target)
 {
    // Set pointer "here" to point the top of linked list of domestic student
    DomesticStudent* here = head.getTop();
@@ -289,19 +288,19 @@ void domStudents::deleteDom(string fn, string ln){
 
    //special cases1: the list is empty
    if (TopStudent == NULL){
-		cout<<"empty list"<<endl;
-		return;
+        cout<<"empty list"<<endl;
+        return;
    }
 
    //special cases2: delete the first student
    if ((before->getFirstName() == Case.checKDomInput(fn)) && (before->getLastName()== Case.checKDomInput(ln))){
-		TopStudent = TopStudent->nextDom;
-		//DomesticStudent* temp->nextDom = before;
-		//before = before->nextDom;
-		delete before;
-		count = count + 1;
-		//return;
-		
+        TopStudent = TopStudent->nextDom;
+        //DomesticStudent* temp->nextDom = before;
+        //before = before->nextDom;
+        delete before;
+        count = count + 1;
+        //return;
+        
    }
 
 
@@ -309,68 +308,67 @@ void domStudents::deleteDom(string fn, string ln){
 
    while (current != lastStudent->nextDom){
 //cout<< "test 3"<< endl;
-		if ((current->getFirstName() == Case.checKDomInput(fn)) && (current->getLastName()== Case.checKDomInput(ln))){
-			//cout<<"test2"<<endl;
-			before->nextDom = current->nextDom;
-			
-			delete current;
-			count = count + 1;
-   		}
-		before = before->nextDom;
-		current = current->nextDom;
+        if ((current->getFirstName() == Case.checKDomInput(fn)) && (current->getLastName()== Case.checKDomInput(ln))){
+            //cout<<"test2"<<endl;
+            before->nextDom = current->nextDom;
+            
+            delete current;
+            count = count + 1;
+           }
+        before = before->nextDom;
+        current = current->nextDom;
    }
 
 
    if (count == 0){
-	cout << "No such student"<< endl;
+    cout << "No such student"<< endl;
    }
   
-}  
+}
 
 
 //2 f delete head and tail
 void domStudents::deleteDom(){
-	DomesticStudent* temp;
-	DomesticStudent* secondL = TopStudent;
-	if(TopStudent == NULL){
-    		cout<<"Invalid Pointer"<<endl;
-  	}
-    	if(TopStudent->nextDom == NULL){
-    		delete TopStudent;
-   	}
-  	//delete first node
-  	else {
-     		temp = TopStudent;
-     		TopStudent = TopStudent->nextDom;
-     		delete temp;
+    DomesticStudent* temp;
+    DomesticStudent* secondL = TopStudent;
+    if(TopStudent == NULL){
+            cout<<"Invalid Pointer"<<endl;
+      }
+        if(TopStudent->nextDom == NULL){
+            delete TopStudent;
+       }
+      //delete first node
+      else {
+             temp = TopStudent;
+             TopStudent = TopStudent->nextDom;
+             delete temp;
 
-  	}
-	//delete last
-	if(lastStudent == NULL){
-		delete lastStudent;
-	}else{
-		
-		while(secondL->nextDom->nextDom != NULL)
-			secondL = secondL->nextDom;
-			
-		delete(secondL->nextDom);
-		secondL->nextDom = NULL;
-	}
+      }
+    //delete last
+    if(lastStudent == NULL){
+        delete lastStudent;
+    }else{
+        
+        while(secondL->nextDom->nextDom != NULL)
+            secondL = secondL->nextDom;
+            
+        delete(secondL->nextDom);
+        secondL->nextDom = NULL;
+    }
 }
 
 //Part2 Q2
 string domStudents::checKDomInput(string name){
-  int i;
   char c;
 
   for (int i = 0; i < name.size(); i++){
     c = name[i];
-	//make every letter to lower case
-	if (isupper(c)){
-		name[i] = tolower(c);
-	}else
-		name[i] = name[i];
-	
+    //make every letter to lower case
+    if (isupper(c)){
+        name[i] = tolower(c);
+    }else
+        name[i] = name[i];
+    
   }
   //make the first letter to upper case
   name[0] = toupper(name[0]);
@@ -378,8 +376,55 @@ string domStudents::checKDomInput(string name){
   return name;
 }
 
+// Part2 3
+void domStudents::Check_Provence(domStudents head)
+{
+    DomesticStudent* here = head.getTop();
+    bool flag =false;
+   int count =0; //Flag to recall the number of targets exist in the linked list
+   if(here == NULL)
+   {
+     cout << "The object is empty."<< endl;
+   }
+   else
+   {
+    while (here != NULL)
+      {
+        int len;
+        string tempStr, provenceStr;
+     
+        provenceStr = here->getProvince();
+        for ( len  = 0; len < provenceStr.length(); len++)
+        {
+               provenceStr[len]=toupper(provenceStr[len]);
+        }
+        tempStr = provenceStr;
+        if ((tempStr == "NL") || (tempStr == "NS") || (tempStr == "NB") || (tempStr == "PE") || 
+             (tempStr == "QC") || (tempStr == "ON") || (tempStr == "MB") || (tempStr == "SK") || 
+             (tempStr == "AB") || (tempStr == "BC") || (tempStr == "YT") || (tempStr == "NT") || (tempStr == "NU"))
+           {
+            flag = false;
+           }
+        else
+        {
+            cout<< "The item contains a wrong record." << endl;
+            cout << *here << endl;
+            flag= true;
+            exit(1);
+        }
+       
+        here = here->nextDom;
+    }
+ if (flag == false)
+        {
+            cout <<" All records about the proviences are correct."<< endl;
+        }
+
+   }  
+}
+
 // innovation 2
-void domStudents::requireDomCGPA(domStudents head, double target)
+void domStudents::requireDomCGPA(domStudents head, float target)
 {
      DomesticStudent* here = head.getTop();
    int count =0; // Flag to recall the number of targets exist in the linked list
@@ -586,7 +631,7 @@ InternationalStudent* intStudents:: getTop( )
    return lastIntStudent;
 }
 
-void intStudents:: Search(intStudents head, double target)
+void intStudents:: Search(intStudents head, float target)
 {
    InternationalStudent* here = head.getTop();
    int count =0;
@@ -801,7 +846,7 @@ Students mergeList(domStudents &dList, intStudents &iList)
     return stuList;
 }
 
-// 2 e 
+// 2 e
 void intStudents::deleteInt(string fn, string ln){
    intStudents Case;
    InternationalStudent* before = TopIntStudent;
@@ -810,18 +855,18 @@ void intStudents::deleteInt(string fn, string ln){
 
    //special cases1: the list is empty
    if (TopIntStudent == NULL){
-		cout<<"empty list"<<endl;
-		return;
+        cout<<"empty list"<<endl;
+        return;
    }
 
    //special cases2: delete the first student
    if ((before->getFirstName() == Case.checKIntInput(fn)) && (before->getLastName()== Case.checKIntInput(ln))){
-		TopIntStudent = TopIntStudent->nextInt;
-		//DomesticStudent* temp->nextDom = before;
-		//before = before->nextDom;
-		delete before;
-		count = count +1;
-		//return;
+        TopIntStudent = TopIntStudent->nextInt;
+        //DomesticStudent* temp->nextDom = before;
+        //before = before->nextDom;
+        delete before;
+        count = count +1;
+        //return;
    }
 
 
@@ -829,53 +874,53 @@ void intStudents::deleteInt(string fn, string ln){
 
    while (current != lastIntStudent->nextInt){
 
-		if ((current->getFirstName() == Case.checKIntInput(fn)) && (current->getLastName()== Case.checKIntInput(ln))){
-			
-			before->nextInt = current->nextInt;
-			
-			delete current;
-			count = count + 1;
-   		}
-		before = before->nextInt;
-		current = current->nextInt;
+        if ((current->getFirstName() == Case.checKIntInput(fn)) && (current->getLastName()== Case.checKIntInput(ln))){
+            
+            before->nextInt = current->nextInt;
+            
+            delete current;
+            count = count + 1;
+           }
+        before = before->nextInt;
+        current = current->nextInt;
    }
 
 
    if (count == 0){
-	cout << "No such student"<< endl;
+    cout << "No such student"<< endl;
    }
   
-}  
+}
 
 
 //2 f
 void intStudents::deleteInt(){
-	InternationalStudent* temp;
-	InternationalStudent* secondL = TopIntStudent;
-	if(TopIntStudent == NULL){
-    		cout<<"Invalid Pointer"<<endl;
-  	}
-    	if(TopIntStudent->nextInt == NULL){
-    		delete TopIntStudent;
-   	}
-  	//delete first 
-  	else {
-     		temp = TopIntStudent;
-     		TopIntStudent = TopIntStudent->nextInt;
-     		delete temp;
+    InternationalStudent* temp;
+    InternationalStudent* secondL = TopIntStudent;
+    if(TopIntStudent == NULL){
+            cout<<"Invalid Pointer"<<endl;
+      }
+        if(TopIntStudent->nextInt == NULL){
+            delete TopIntStudent;
+       }
+      //delete first
+      else {
+             temp = TopIntStudent;
+             TopIntStudent = TopIntStudent->nextInt;
+             delete temp;
 
-  	}
-	//delete last
-	if(lastIntStudent == NULL){
-		delete lastIntStudent;
-	}else{
-		
-		while(secondL->nextInt->nextInt != NULL)
-			secondL = secondL->nextInt;
-			
-		delete(secondL->nextInt);
-		secondL->nextInt = NULL;
-	}
+      }
+    //delete last
+    if(lastIntStudent == NULL){
+        delete lastIntStudent;
+    }else{
+        
+        while(secondL->nextInt->nextInt != NULL)
+            secondL = secondL->nextInt;
+            
+        delete(secondL->nextInt);
+        secondL->nextInt = NULL;
+    }
 }
 
 //Part2 Q2
@@ -885,12 +930,12 @@ string intStudents::checKIntInput(string name){
 
   for (int i = 0; i < name.size(); i++){
     c = name[i];
-	//make every letter to lower case
-	if (isupper(c)){
-		name[i] = tolower(c);
-	}else
-		name[i] = name[i];
-	
+    //make every letter to lower case
+    if (isupper(c)){
+        name[i] = tolower(c);
+    }else
+        name[i] = name[i];
+    
   }
   //make the first letter to upper case
   name[0] = toupper(name[0]);
@@ -898,3 +943,245 @@ string intStudents::checKIntInput(string name){
   return name;
 }
 
+// Part2 3
+void intStudents::Check_Country(intStudents head)
+{
+    InternationalStudent* here = head.getTop();
+    bool flag =false;
+   int count =0; //Flag to recall the number of targets exist in the linked list
+   if(here == NULL)
+   {
+     cout << "The object is empty."<< endl;
+   }
+   else
+   {
+     while (here != NULL)
+       {
+          int len;
+          string tempStr, CountryStr;
+     
+          CountryStr = here->getCountry();
+          for ( len  = 0; len < CountryStr.length(); len++)
+           {
+              CountryStr[len]=toupper(CountryStr[len]);
+           }
+          int C_Number=0;
+          int A_Number =0;
+          int N_Number =0;
+          int D_Number =0;
+          if ((CountryStr.length()==6) && CountryStr != "CANADA" )
+              {   
+                for ( len  = 0; len < CountryStr.length(); len++)
+                 {
+                  if ( CountryStr[len]== 'C')
+                    {
+                     C_Number = C_Number+1;
+                    }
+                   else if ( CountryStr[len]== 'A')
+                   {   
+                    A_Number = A_Number+1;
+                   }
+                   else if ( CountryStr[len]== 'D')
+                   {       
+                    D_Number = D_Number+1;  
+                   }
+                   else if ( CountryStr[len]== 'N')
+                   {
+                       
+                    N_Number = N_Number+1;
+                   
+                   }
+                   if (( N_Number==1) && (D_Number==1) && (A_Number==3) && (C_Number==1))
+                   {
+                    CountryStr = "CANADA";
+                    cout << "It's a typo and fixes it to Canada"<< endl;
+                    cout<< *here << endl;
+                   }
+               }
+            }
+            int I_Number=0;
+            int R_Number =0;
+            A_Number =0;
+            N_Number =0;
+            if ((CountryStr.length()==4) && CountryStr != "IRAN" )
+             {
+                 for ( len  = 0; len < CountryStr.length(); len++)
+                 {
+                   if ( CountryStr[len]== 'I')
+                   {   
+                    I_Number = I_Number+1;
+                   }
+                   else if ( CountryStr[len]== 'R')
+                   {   
+                    R_Number = R_Number+1;
+                   }
+                   else if ( CountryStr[len]== 'A')
+                   {      
+                    A_Number = A_Number+1;  
+                   }
+                   else if ( CountryStr[len]== 'N')
+                   {      
+                    N_Number = N_Number+1;   
+                   }
+                   if (( I_Number==1) && (R_Number==1) && (N_Number==1) && (N_Number==1))
+                   {
+                       CountryStr = "IRAN";
+                       cout << "It's a typo and fixes it to Iran"<< endl;
+                       cout<< *here << endl;
+                   }
+               }
+           }
+            C_Number = 0;
+            int H_Number = 0;
+            I_Number = 0;
+            N_Number = 0;
+            A_Number = 0;
+            D_Number = 0;
+            int K_Number = 0;
+            int O_Number = 0;
+            R_Number = 0;
+            int E_Number=0;
+            if ((CountryStr.length()==5) && (CountryStr != "CHINA") && (CountryStr != "INDIA")&& (CountryStr != "KOREA") )
+           {
+                 for ( len  = 0; len < CountryStr.length(); len++)
+               {
+                   if ( CountryStr[len]== 'C')
+                   {   
+                    C_Number = C_Number+1;
+                   }
+                   else if ( CountryStr[len]== 'H')
+                   {   
+                    H_Number = H_Number+1;
+                   }
+                   else if ( CountryStr[len]== 'I')
+                   {       
+                    I_Number = I_Number+1;  
+                   }
+                   else if ( CountryStr[len]== 'N')
+                   {                       
+                    N_Number = N_Number+1;                   
+                   }
+                    else if ( CountryStr[len]== 'A')
+                   {               
+                    A_Number = A_Number+1;   
+                   }
+                    else if ( CountryStr[len]== 'D')
+                   {      
+                    D_Number = D_Number+1;   
+                   }
+                   else if ( CountryStr[len]== 'K')
+                   {      
+                    K_Number = K_Number+1;   
+                   }
+                    else if ( CountryStr[len]== 'O')
+                   {      
+                    O_Number = O_Number+1;  
+                   }
+                    else if ( CountryStr[len]== 'R')
+                   {      
+                    R_Number = R_Number+1;   
+                   }
+                   else if ( CountryStr[len]== 'E')
+                   {      
+                    E_Number = E_Number+1;   
+                   }
+
+                   if (( C_Number==1) && (H_Number==1) && (I_Number==1) && (N_Number==1) && (A_Number==1) )
+                   {
+                       CountryStr = "CHINA";
+                       cout << "It's a typo " << here->getCountry()   <<"  and fixes it to China"<< endl;
+                       cout<< *here << endl;
+                   }
+
+                   if (( I_Number==2) && (N_Number==1) && (D_Number==1) && (A_Number==1) )
+                   {
+                       CountryStr = "INDIA";
+                       cout << "It's a typo "<<  here->getCountry()  <<" and fixes it to India"<< endl;
+                       cout<< *here << endl;
+                   }
+                  if (( K_Number==1) && (O_Number==1) && (R_Number==1) && (E_Number==1)&& (A_Number==1)  )
+                   {
+                       CountryStr = "KOERA";
+                       cout << "It's a typo " << here->getCountry()  <<" and fixes it to Korea"<< endl;
+                       cout<< *here << endl;
+                   }
+
+                }
+           }           
+           tempStr = CountryStr;
+           if ((tempStr == "CHINA") || (tempStr == "CANADA") || (tempStr == "INDIA") || (tempStr == "IRAN") || 
+             (tempStr == "KOREA"))
+             {
+               flag = false;
+              }
+           else
+            {
+               cout<< "The item contains a wrong record." << endl;
+               cout << *here << endl;
+               flag= true;
+               exit(1);
+            }
+       
+            here = here->nextInt;
+     }
+     if (flag == false)
+        {
+            cout <<" All records about the Countries are correct."<< endl;
+        }
+   }  
+}
+// innovation2
+void intStudents::requireIntCGPA(intStudents head, float target)
+{
+   InternationalStudent* here = head.getTop();
+   int count =0; // Flag to recall the number of targets exist in the linked list
+   if(here == NULL)
+   {
+      cout << "The object is empty."<< endl;
+   }
+   else
+   {
+     // Search whole linked list to check if or not have target
+     while (here != NULL)
+     {
+          if( here->getCGPA() > target )// The condtion to judge if or not exist the required target
+           {
+              count =count +1;
+              cout << *here << endl;
+           }
+          here = here->nextInt;
+     }
+     if ( count ==0 )
+     {
+       cout<<"The domestic students satisfied the requirements do noe exist." <<endl;
+     }
+   }
+}
+
+// innovation2
+void intStudents::requireIntScore(intStudents head, int target)
+{
+    InternationalStudent* here = head.getTop();
+   int count =0; // Flag to recall the number of targets exist in the linked list
+   if(here == NULL)
+   {
+      cout << "The object is empty."<< endl;
+   }
+   else
+   {
+     // Search whole linked list to check if or not have target
+     while (here != NULL)
+     {
+            if( here->getResearchScore() > target )// The condtion to judge if or not exist the required target
+           {
+              count =count +1;
+              cout << *here << endl;
+           }
+          here = here->nextInt;
+     }
+     if ( count ==0 )
+     {
+       cout<<"The domestic students satisfied the requirements do noe exist." <<endl;
+     }
+   }
+}
