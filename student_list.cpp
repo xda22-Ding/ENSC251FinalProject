@@ -181,7 +181,7 @@ DomesticStudent* domStudents:: getTop( )
 
 
 // To print all information of domestic student with the same CGPA(target)
- void domStudents:: Search(domStudents head, double target)
+ void domStudents:: Search(domStudents head, float target)
 {
    // Set pointer "here" to point the top of linked list of domestic student
    DomesticStudent* here = head.getTop();
