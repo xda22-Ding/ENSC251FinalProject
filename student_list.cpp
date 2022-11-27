@@ -424,7 +424,7 @@ void domStudents::Check_Provence(domStudents head)
 }
 
 // innovation 2
-void domStudents::requireDomCGPA(domStudents head, double target)
+void domStudents::requireDomCGPA(domStudents head, float target)
 {
      DomesticStudent* here = head.getTop();
    int count =0; // Flag to recall the number of targets exist in the linked list
@@ -1131,7 +1131,7 @@ void intStudents::Check_Country(intStudents head)
    }  
 }
 // innovation2
-void intStudents::requireIntCGPA(intStudents head, double target)
+void intStudents::requireIntCGPA(intStudents head, float target)
 {
    InternationalStudent* here = head.getTop();
    int count =0; // Flag to recall the number of targets exist in the linked list
