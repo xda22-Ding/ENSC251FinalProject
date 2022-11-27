@@ -45,11 +45,7 @@ class DomesticStudent : public Student
 public:
     DomesticStudent* nextDom;
     //Constructor
-<<<<<<< HEAD
-    DomesticStudent(string fn, string ln, float cgpa, int score,  string province);
-=======
     DomesticStudent(string fn, string ln, float cgpa, int score, string province);
->>>>>>> origin/main
     DomesticStudent();
     //Getter
     string getProvince() const;
@@ -95,11 +91,7 @@ class InternationalStudent : public Student
 public:
     InternationalStudent* nextInt;
     //Constructors
-<<<<<<< HEAD
-    InternationalStudent(string fn, string ln, float cgpa, int score,  ToeflScore toefl_score, string country);
-=======
     InternationalStudent(string fn, string ln, float cgpa, int score, ToeflScore toefl_score, string country);
->>>>>>> origin/main
     InternationalStudent();
     //Getters
     ToeflScore getToeflScore() const;

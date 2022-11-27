@@ -100,11 +100,7 @@ DomesticStudent::DomesticStudent()
 {
     nextDom = NULL;
 }
-<<<<<<< HEAD
-DomesticStudent::DomesticStudent(string fn, string ln, float cgpa, int score,  string province):Student(fn, ln, cgpa, score)
-=======
 DomesticStudent::DomesticStudent(string fn, string ln, float cgpa, int score, string province):Student(fn, ln, cgpa, score)
->>>>>>> origin/main
 {
     this->province = province;
     nextDom = NULL;
@@ -196,11 +192,7 @@ InternationalStudent::InternationalStudent()
 {
     nextInt = NULL;
 }
-<<<<<<< HEAD
-InternationalStudent::InternationalStudent(string fn, string ln, float cgpa, int score,  ToeflScore toefl_score, string country):Student(fn, ln, cgpa, score)
-=======
 InternationalStudent::InternationalStudent(string fn, string ln, float cgpa, int score, ToeflScore toefl_score, string country):Student(fn, ln, cgpa, score)
->>>>>>> origin/main
 {
     setToeflScore(toefl_score);
     setCountry(country);
@@ -292,4 +284,5 @@ int compareLastName(const Student &stu1, const Student &stu2)
         return 1;
     return 3;
 }
+
 
