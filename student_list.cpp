@@ -64,6 +64,7 @@ void Students::insertMix(Student* stud)
         }
 
     }
+    lastStudent->next = NULL;
 
 }
 //This function search the threshold of cpga and research socre and print out the valid results.
@@ -74,14 +75,12 @@ void Students::searchThreshold(float cgpaThreshold, int researchThreshold)
     {
         if (tempptr->getResearchScore() >= researchThreshold)
         {
-            if (tempptr->getCGPA() >= tempptr->getCGPA())
-            {
+            if (tempptr->getCGPA() >= cgpaThreshold)
                 cout << *tempptr << endl;
-                tempptr = tempptr->next;
-            }
         }
         else
             return;
+        tempptr = tempptr->next;
     }
 }
 void Students::printList()
@@ -289,19 +288,19 @@ void domStudents::deleteDom(string fn, string ln){
 
    //special cases1: the list is empty
    if (TopStudent == NULL){
-		cout<<"empty list"<<endl;
-		return;
+        cout<<"empty list"<<endl;
+        return;
    }
 
    //special cases2: delete the first student
    if ((before->getFirstName() == Case.checKDomInput(fn)) && (before->getLastName()== Case.checKDomInput(ln))){
-		TopStudent = TopStudent->nextDom;
-		//DomesticStudent* temp->nextDom = before;
-		//before = before->nextDom;
-		delete before;
-		count = count + 1;
-		//return;
-		
+        TopStudent = TopStudent->nextDom;
+        //DomesticStudent* temp->nextDom = before;
+        //before = before->nextDom;
+        delete before;
+        count = count + 1;
+        //return;
+        
    }
 
 
@@ -309,68 +308,67 @@ void domStudents::deleteDom(string fn, string ln){
 
    while (current != lastStudent->nextDom){
 //cout<< "test 3"<< endl;
-		if ((current->getFirstName() == Case.checKDomInput(fn)) && (current->getLastName()== Case.checKDomInput(ln))){
-			//cout<<"test2"<<endl;
-			before->nextDom = current->nextDom;
-			
-			delete current;
-			count = count + 1;
-   		}
-		before = before->nextDom;
-		current = current->nextDom;
+        if ((current->getFirstName() == Case.checKDomInput(fn)) && (current->getLastName()== Case.checKDomInput(ln))){
+            //cout<<"test2"<<endl;
+            before->nextDom = current->nextDom;
+            
+            delete current;
+            count = count + 1;
+           }
+        before = before->nextDom;
+        current = current->nextDom;
    }
 
 
    if (count == 0){
-	cout << "No such student"<< endl;
+    cout << "No such student"<< endl;
    }
   
-}  
+}
 
 
 //2 f delete head and tail
 void domStudents::deleteDom(){
-	DomesticStudent* temp;
-	DomesticStudent* secondL = TopStudent;
-	if(TopStudent == NULL){
-    		cout<<"Invalid Pointer"<<endl;
-  	}
-    	if(TopStudent->nextDom == NULL){
-    		delete TopStudent;
-   	}
-  	//delete first node
-  	else {
-     		temp = TopStudent;
-     		TopStudent = TopStudent->nextDom;
-     		delete temp;
+    DomesticStudent* temp;
+    DomesticStudent* secondL = TopStudent;
+    if(TopStudent == NULL){
+            cout<<"Invalid Pointer"<<endl;
+      }
+        if(TopStudent->nextDom == NULL){
+            delete TopStudent;
+       }
+      //delete first node
+      else {
+             temp = TopStudent;
+             TopStudent = TopStudent->nextDom;
+             delete temp;
 
-  	}
-	//delete last
-	if(lastStudent == NULL){
-		delete lastStudent;
-	}else{
-		
-		while(secondL->nextDom->nextDom != NULL)
-			secondL = secondL->nextDom;
-			
-		delete(secondL->nextDom);
-		secondL->nextDom = NULL;
-	}
+      }
+    //delete last
+    if(lastStudent == NULL){
+        delete lastStudent;
+    }else{
+        
+        while(secondL->nextDom->nextDom != NULL)
+            secondL = secondL->nextDom;
+            
+        delete(secondL->nextDom);
+        secondL->nextDom = NULL;
+    }
 }
 
 //Part2 Q2
 string domStudents::checKDomInput(string name){
-  int i;
   char c;
 
   for (int i = 0; i < name.size(); i++){
     c = name[i];
-	//make every letter to lower case
-	if (isupper(c)){
-		name[i] = tolower(c);
-	}else
-		name[i] = name[i];
-	
+    //make every letter to lower case
+    if (isupper(c)){
+        name[i] = tolower(c);
+    }else
+        name[i] = name[i];
+    
   }
   //make the first letter to upper case
   name[0] = toupper(name[0]);
@@ -801,7 +799,7 @@ Students mergeList(domStudents &dList, intStudents &iList)
     return stuList;
 }
 
-// 2 e 
+// 2 e
 void intStudents::deleteInt(string fn, string ln){
    intStudents Case;
    InternationalStudent* before = TopIntStudent;
@@ -810,18 +808,18 @@ void intStudents::deleteInt(string fn, string ln){
 
    //special cases1: the list is empty
    if (TopIntStudent == NULL){
-		cout<<"empty list"<<endl;
-		return;
+        cout<<"empty list"<<endl;
+        return;
    }
 
    //special cases2: delete the first student
    if ((before->getFirstName() == Case.checKIntInput(fn)) && (before->getLastName()== Case.checKIntInput(ln))){
-		TopIntStudent = TopIntStudent->nextInt;
-		//DomesticStudent* temp->nextDom = before;
-		//before = before->nextDom;
-		delete before;
-		count = count +1;
-		//return;
+        TopIntStudent = TopIntStudent->nextInt;
+        //DomesticStudent* temp->nextDom = before;
+        //before = before->nextDom;
+        delete before;
+        count = count +1;
+        //return;
    }
 
 
@@ -829,53 +827,53 @@ void intStudents::deleteInt(string fn, string ln){
 
    while (current != lastIntStudent->nextInt){
 
-		if ((current->getFirstName() == Case.checKIntInput(fn)) && (current->getLastName()== Case.checKIntInput(ln))){
-			
-			before->nextInt = current->nextInt;
-			
-			delete current;
-			count = count + 1;
-   		}
-		before = before->nextInt;
-		current = current->nextInt;
+        if ((current->getFirstName() == Case.checKIntInput(fn)) && (current->getLastName()== Case.checKIntInput(ln))){
+            
+            before->nextInt = current->nextInt;
+            
+            delete current;
+            count = count + 1;
+           }
+        before = before->nextInt;
+        current = current->nextInt;
    }
 
 
    if (count == 0){
-	cout << "No such student"<< endl;
+    cout << "No such student"<< endl;
    }
   
-}  
+}
 
 
 //2 f
 void intStudents::deleteInt(){
-	InternationalStudent* temp;
-	InternationalStudent* secondL = TopIntStudent;
-	if(TopIntStudent == NULL){
-    		cout<<"Invalid Pointer"<<endl;
-  	}
-    	if(TopIntStudent->nextInt == NULL){
-    		delete TopIntStudent;
-   	}
-  	//delete first 
-  	else {
-     		temp = TopIntStudent;
-     		TopIntStudent = TopIntStudent->nextInt;
-     		delete temp;
+    InternationalStudent* temp;
+    InternationalStudent* secondL = TopIntStudent;
+    if(TopIntStudent == NULL){
+            cout<<"Invalid Pointer"<<endl;
+      }
+        if(TopIntStudent->nextInt == NULL){
+            delete TopIntStudent;
+       }
+      //delete first
+      else {
+             temp = TopIntStudent;
+             TopIntStudent = TopIntStudent->nextInt;
+             delete temp;
 
-  	}
-	//delete last
-	if(lastIntStudent == NULL){
-		delete lastIntStudent;
-	}else{
-		
-		while(secondL->nextInt->nextInt != NULL)
-			secondL = secondL->nextInt;
-			
-		delete(secondL->nextInt);
-		secondL->nextInt = NULL;
-	}
+      }
+    //delete last
+    if(lastIntStudent == NULL){
+        delete lastIntStudent;
+    }else{
+        
+        while(secondL->nextInt->nextInt != NULL)
+            secondL = secondL->nextInt;
+            
+        delete(secondL->nextInt);
+        secondL->nextInt = NULL;
+    }
 }
 
 //Part2 Q2
@@ -885,12 +883,12 @@ string intStudents::checKIntInput(string name){
 
   for (int i = 0; i < name.size(); i++){
     c = name[i];
-	//make every letter to lower case
-	if (isupper(c)){
-		name[i] = tolower(c);
-	}else
-		name[i] = name[i];
-	
+    //make every letter to lower case
+    if (isupper(c)){
+        name[i] = tolower(c);
+    }else
+        name[i] = name[i];
+    
   }
   //make the first letter to upper case
   name[0] = toupper(name[0]);

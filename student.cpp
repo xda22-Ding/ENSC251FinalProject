@@ -1,10 +1,3 @@
-//
-//  student.cpp
-//  FinalProject
-//
-//  Created by Luo LanQing on 2022/11/24.
-//
-
 #include "student.hpp"
 /* ----------------------------Student Class------------------------------*/
 int Student::BaseID = 20220000;
@@ -17,7 +10,7 @@ Student::Student()
     BaseID++;
     next = NULL;
 }
-Student::Student(string fn, string ln, float cgpa, int score, int APPID)
+Student::Student(string fn, string ln, float cgpa, int score)
 {
     setFirstName(fn);
     setLastName(ln);
@@ -91,7 +84,7 @@ void Student::printOutStudent(ostream &outs)
 {
     string fristname = getFirstName();
     string lastname = getLastName();
-    outs << fristname << "      " << lastname << "      " << getAppID() << "      " << getResearchScore() << "      " << getCGPA() << endl;
+    outs << fristname << "      " << lastname << "      " << getAppID() << "      " << getResearchScore() << "      " << getCGPA() << "      " << getAppID() << endl;;
 }
 
 ostream &operator << (ostream &out, Student stu)
@@ -107,7 +100,7 @@ DomesticStudent::DomesticStudent()
 {
     nextDom = NULL;
 }
-DomesticStudent::DomesticStudent(string fn, string ln, float cgpa, int score, int APPID, string province):Student(fn, ln, cgpa, score, APPID)
+DomesticStudent::DomesticStudent(string fn, string ln, float cgpa, int score, string province):Student(fn, ln, cgpa, score)
 {
     this->province = province;
     nextDom = NULL;
@@ -136,7 +129,7 @@ int compareProvince (const DomesticStudent* stu1, const DomesticStudent* stu2)
 }
 ostream& operator <<(std::ostream& outs, const DomesticStudent& domesStu)
 {
-    outs << "Domestic Student : " <<domesStu.getFirstName() << " "<< domesStu.getLastName() <<" is from " << domesStu.getProvince() << ". " <<"CGPA : " <<domesStu.getCGPA() << " Research Score: " << domesStu.getResearchScore() << endl;
+    outs << "Domestic Student : " <<domesStu.getFirstName() << " "<< domesStu.getLastName() <<" is from " << domesStu.getProvince() << ". " <<"CGPA : " <<domesStu.getCGPA() << " Research Score: " << domesStu.getResearchScore() << "Student ID: " << domesStu.getAppID() << endl;;
         return outs;
 }
 
@@ -199,7 +192,7 @@ InternationalStudent::InternationalStudent()
 {
     nextInt = NULL;
 }
-InternationalStudent::InternationalStudent(string fn, string ln, float cgpa, int score, int APPID, ToeflScore toefl_score, string country):Student(fn, ln, cgpa, score, APPID)
+InternationalStudent::InternationalStudent(string fn, string ln, float cgpa, int score, ToeflScore toefl_score, string country):Student(fn, ln, cgpa, score)
 {
     setToeflScore(toefl_score);
     setCountry(country);
@@ -235,7 +228,7 @@ int compareCountry (const InternationalStudent* stu1, const InternationalStudent
 }
 ostream& operator <<(std::ostream& outs, const InternationalStudent& interStu)
 {
-    outs << "International Student : " <<interStu.getFirstName() << " "<< interStu.getLastName() <<" is from " << interStu.getCountry() << ". " <<"CGPA : " <<interStu.getCGPA() << " Research Score: " << interStu.getResearchScore() <<" Toefl Score: reading: " <<interStu.getToeflScore().getReading() <<"; listening: "<<interStu.getToeflScore().getListening()<<"; Speaking: "<<interStu.getToeflScore().getSpeaking()<<"; Writing: "<<interStu.getToeflScore().getWriting()<<"."<< endl;
+    outs << "International Student : " <<interStu.getFirstName() << " "<< interStu.getLastName() <<" is from " << interStu.getCountry() << ". " <<"CGPA : " <<interStu.getCGPA() << " Research Score: " << interStu.getResearchScore() <<" Toefl Score: reading: " <<interStu.getToeflScore().getReading() <<"; listening: "<<interStu.getToeflScore().getListening()<<"; Speaking: "<<interStu.getToeflScore().getSpeaking()<<"; Writing: "<<interStu.getToeflScore().getWriting()<<"."<< "Student ID: " << interStu.getAppID() << endl;
 
      return outs;
 }

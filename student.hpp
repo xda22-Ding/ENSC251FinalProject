@@ -1,10 +1,3 @@
-//
-//  student.hpp
-//  FinalProject
-//
-//  Created by Luo LanQing on 2022/11/24.
-//
-
 #ifndef student_hpp
 #define student_hpp
 
@@ -19,7 +12,7 @@ class Student
 public:
     Student* next ;
     //Constructors
-    Student(string fn, string ln, float cgpa, int score, int APPID);
+    Student(string fn, string ln, float cgpa, int score);
     Student();
     //Getters
     string getFirstName() const;
@@ -32,6 +25,7 @@ public:
     void setLastName(string ln);
     void setCGPA(float cgpa);
     void setResearchScore(int score);
+    void setID (int ID);
     //Other member functions
     bool isValid() const;
     void printOutStudent (ostream &outs);
@@ -51,7 +45,7 @@ class DomesticStudent : public Student
 public:
     DomesticStudent* nextDom;
     //Constructor
-    DomesticStudent(string fn, string ln, float cgpa, int score, int APPID, string province);
+    DomesticStudent(string fn, string ln, float cgpa, int score, string province);
     DomesticStudent();
     //Getter
     string getProvince() const;
@@ -97,7 +91,7 @@ class InternationalStudent : public Student
 public:
     InternationalStudent* nextInt;
     //Constructors
-    InternationalStudent(string fn, string ln, float cgpa, int score, int APPID, ToeflScore toefl_score, string country);
+    InternationalStudent(string fn, string ln, float cgpa, int score, ToeflScore toefl_score, string country);
     InternationalStudent();
     //Getters
     ToeflScore getToeflScore() const;
