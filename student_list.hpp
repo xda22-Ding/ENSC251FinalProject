@@ -38,7 +38,7 @@ public:
     DomesticStudent* getlast();
     
     //This Search Function is to find some domestic students satisfied requirements of CGPA   2 b
-    void Search(domStudents head, double target);
+    void Search(domStudents head, float target);
 
     //This Search Function is to find some domestic students satisfied requirements of application ID or research score 2b
     void Search(domStudents head, int target);
