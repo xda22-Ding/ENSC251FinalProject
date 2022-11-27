@@ -52,7 +52,7 @@ public:
     float rankStudent(DomesticStudent* objectStud);
     
     //innovation 2
-    void requireDomCGPA(domStudents head, double target);
+    void requireDomCGPA(domStudents head, float target);
     void requireDomScore(domStudents head, int target);
     
     void deleteDom(string fn,string ln);
@@ -98,7 +98,7 @@ public:
     void deleteInt();
     
     //innovation 2
-    void requireIntCGPA(intStudents head, double target);
+    void requireIntCGPA(intStudents head, float target);
     void requireIntScore(intStudents head, int target);
     
     //check input case
