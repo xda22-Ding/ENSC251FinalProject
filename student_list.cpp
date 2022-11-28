@@ -97,11 +97,11 @@ void Students::dataSummary(){
     Student* tempStud = TopStudent;
     int totalStudent = 0;
     float CGPAsum = 0;
-    float CGPAmean;
-    float stdCGPA;
+    float CGPAmean =0;
+    float stdCGPA = 0;
     float researchScoresum =0;
-    float researchScoremean;
-    float stdRS;
+    float researchScoremean = 0;
+    float stdRS = 0;
     tempStud = TopStudent;
     while(tempStud != NULL)
     {
@@ -120,8 +120,8 @@ void Students::dataSummary(){
         stdRS += pow(tempStud->getResearchScore() - researchScoremean, 2);
         tempStud = tempStud->next;
     }
-    stdCGPA = sqrt(stdCGPA/10);
-    stdRS = sqrt(stdRS/10);
+    stdCGPA = sqrt(stdCGPA/totalStudent);
+    stdRS = sqrt(stdRS/totalStudent);
     cout << "The mean of CGPA is: " << CGPAmean << "; The standard deviation of CGPA is " <<stdCGPA << endl;
     cout << "The mean of Research Score is: " << researchScoremean << "; The standard deviation of Research Score is " << stdRS << endl;
 
@@ -142,6 +142,7 @@ void domStudents::insert(DomesticStudent* stud){
         lastStudent = stud;
     }
     else{
+        //Compare the inserted student with the first student.
         DomesticStudent* tempStud = TopStudent;
         if(compareResearchScore(*stud,*tempStud) == 1){
             stud->nextDom = tempStud;
@@ -164,7 +165,7 @@ void domStudents::insert(DomesticStudent* stud){
         }
 
 
-
+        //compare the inserted student with the rest of students in the linked list.
         while(tempStud != lastStudent ){
             if(compareResearchScore(*stud,*tempStud->nextDom) == 1){
                 stud->nextDom = tempStud->nextDom;
