@@ -231,6 +231,50 @@ int main(){
      }
 
 
+    char choose;
+    for(int k = 1; k < 100; k++)
+    {
+     cout <<"  What do you want?" <<endl;
+     cout <<"  A for Printing All Sorted Domestic-stu Document" << endl;
+     cout <<"  B for Printing All Sorted International-stu Document" << endl;
+     cout <<"  C for " << endl;
+     cout <<"  D for " <<endl;
+     cout <<"  E for "<<endl;
+     cout <<"  F for " <<endl;
+     cout <<"  G for stop" << endl;  
+     cin >> choose;
+     
+     if(choose > 'G' || choose < 'A')
+     {
+       cout << "Please write number between A and G" << endl;
+       exit(1);
+     }
+     if(choose == 'G')
+       break;
+     else
+     {
+       switch(choose)
+        {
+        case 'A':
+            stuList.printList();
+            break;
+        case 'B':
+            intList.printList();
+            break;
+        case 'C':
+            break;
+        case 'D':
+            break;           
+        case 'E':
+            break;
+        case 'F':
+            break;
+      }
+    }
+ 
+}
+
+
 
      /*** //User id password
 	int id;
@@ -253,7 +297,7 @@ int main(){
 	}
 ***/	
 
-
+    /*
      cout << "international students: " << endl;
      intList.printList();
 
@@ -292,6 +336,6 @@ int main(){
     cout << endl;
     cout << "perform the unit test: " << endl;
     unitTest_Search(stuList, intList);
-    
+    */
     return 0;
 }
