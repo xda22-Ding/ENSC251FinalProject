@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include <cmath>
 #include <fstream> //file processing
 #include <sstream> //formatted string processing
 #include <cstdlib> //atof and atoi
