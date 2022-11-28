@@ -11,6 +11,7 @@ Student::Student()
     BaseID++;
     passW = BasePassW;
     BasePassW++;
+    setPassW(passW);
     next = NULL;
 }
 Student::Student(string fn, string ln, float cgpa, int score)
@@ -23,6 +24,7 @@ Student::Student(string fn, string ln, float cgpa, int score)
     BaseID++;
     passW = BasePassW;
     BasePassW++;
+    setPassW(passW);
     next = NULL;
     isValid();
 }
@@ -67,6 +69,9 @@ void Student::setCGPA(float cgpa)
 void Student::setResearchScore(int score)
 {
     research_score = score;
+}
+void Student::setPassW(int pw){
+    passW = pw;
 }
 //Other member functions
 bool Student::isValid() const
