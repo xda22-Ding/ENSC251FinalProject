@@ -48,7 +48,7 @@ public:
     void Search(domStudents head, string FirstName, string LastName);
     
     //This function insert a new node in the linked list based on the required order 2d
-    void insert(domStudents dom_list, DomesticStudent* stud);
+    //void insert(domStudents dom_list, DomesticStudent* stud);
     int totalStudent();
     float rankStudent(DomesticStudent* objectStud);
     
@@ -94,7 +94,7 @@ public:
     void Search(intStudents head, string FirstName, string LastName);
     
     //This function insert a new node in the linked list based on the required order 2d
-    void insert( intStudents int_list ,  InternationalStudent* stud);
+    //void insert( intStudents int_list ,  InternationalStudent* stud);
     int totalStudent();
     
     void deleteInt(string fn,string ln);
