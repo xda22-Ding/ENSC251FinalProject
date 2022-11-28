@@ -65,6 +65,7 @@ public:
     
     //innovation 3 
     bool isVerified(int ID, int PW) const;
+    void resetPW(int id, int pw);
 private:
     DomesticStudent* TopStudent;
     DomesticStudent* lastStudent;
@@ -110,6 +111,7 @@ public:
     
     //innovation 3 
     bool isVerified(int ID, int PW) const;
+    void resetPW(int id, int pw);
     
 private:
     InternationalStudent* TopIntStudent;
