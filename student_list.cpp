@@ -255,6 +255,7 @@ void domStudents::Search(domStudents head, int target)
 void domStudents:: Search (domStudents head,string FirstName, string LastName)
 {
    DomesticStudent* here = head.getTop();
+   domStudents Case;
    int count =0;
    if(here == NULL)
    {
@@ -264,7 +265,7 @@ void domStudents:: Search (domStudents head,string FirstName, string LastName)
    {
       while (here != NULL)
     {
-           if((here->getFirstName() == FirstName) && (here->getLastName()== LastName))
+           if((here->getFirstName() == Case.checKDomInput(FirstName)) && (here->getLastName()== Case.checKDomInput(LastName)))
              {
                 count =count +1;
         cout << *here << endl;
@@ -277,6 +278,7 @@ void domStudents:: Search (domStudents head,string FirstName, string LastName)
        cout<<"Information here not found" <<endl;
      }
    }
+
 
 
 // 2 e delete base on name
