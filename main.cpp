@@ -394,7 +394,7 @@ int main(){
 	else{
 	 
 	 stuList.Search(stuList, id);
-	 cout << "Applicaiton Status: Fail" << endl;
+	 //cout << "Applicaiton Status: Fail" << endl;
 	
 	}	
      }
@@ -415,7 +415,7 @@ int main(){
 	else{
 	 
 	 intList.Search(intList, id);
-	 cout << "Applicaiton Status: Fail" << endl;
+	 //cout << "Applicaiton Status: Fail" << endl;
 	
 	}	
      }
