@@ -715,7 +715,7 @@ void intStudents::Search(intStudents head, int target)
 
 void intStudents:: Search (intStudents head,string FirstName, string LastName)
 {
-    
+   intStudents Case; 
    InternationalStudent* here = head.getTop();
    int count =0;
    if(here == NULL)
@@ -726,7 +726,7 @@ void intStudents:: Search (intStudents head,string FirstName, string LastName)
    {
       while (here != NULL)
     {
-           if((here->getFirstName() == FirstName) && (here->getLastName()== LastName))
+           if((here->getFirstName() == Case.checKIntInput(FirstName)) && (here->getLastName()== Case.checKIntInput(LastName)))
               {
                  count =count +1;
          cout << *here << endl;
@@ -740,7 +740,6 @@ void intStudents:: Search (intStudents head,string FirstName, string LastName)
        cout<<"Information here not found" <<endl;
      }
    }
-
 void intStudents::insert(intStudents int_list , InternationalStudent* stud){
 
       InternationalStudent* here = int_list.getTop();
