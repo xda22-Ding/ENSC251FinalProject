@@ -531,7 +531,7 @@ void domStudents::requireDomScore(domStudents head, int target)
 }
 
 // Based on the definition of order to insert new student to  the student's data
-void domStudents::insert(domStudents dom_list, DomesticStudent* stud){
+/*void domStudents::insert(domStudents dom_list, DomesticStudent* stud){
 
     DomesticStudent* here = dom_list.getTop();//Set pointer "here" to point the top of linked list of domestic student
     if( here ==NULL){
@@ -593,7 +593,7 @@ void domStudents::insert(domStudents dom_list, DomesticStudent* stud){
     
     }
 
-}
+}*/
 /*------------Domestic Student Linked List----------------*/
 
 /*------------International Student Linked List----------------*/
@@ -776,7 +776,8 @@ void intStudents:: Search (intStudents head,string FirstName, string LastName)
        cout<<"Information here not found" <<endl;
      }
    }
-void intStudents::insert(intStudents int_list , InternationalStudent* stud){
+
+/*void intStudents::insert(intStudents int_list , InternationalStudent* stud){
 
       InternationalStudent* here = int_list.getTop();
     if(here==NULL){
@@ -837,7 +838,7 @@ void intStudents::insert(intStudents int_list , InternationalStudent* stud){
         }
 
     }
-}
+}*/
 
 
 int domStudents::totalStudent(){
