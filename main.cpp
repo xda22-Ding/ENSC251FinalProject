@@ -486,7 +486,7 @@ int main(){
       cout<<"  N. Obtain Some International Students Information"<<endl;
       cout<<"  O. Insert New Domstic Students" <<endl; 
       cout<<"  P. Insert New International Students" <<endl;
-      cout<<"  Q. Students Satisfied Special Requirement" <<endl;
+      cout<<"  Q. Students Satisfied Special Requirement" <<endl; //innovation2
 	    
      cout <<"  R for stop" << endl;  
      
