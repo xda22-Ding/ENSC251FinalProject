@@ -166,21 +166,42 @@ void unitTest_Search(domStudents &dList, intStudents &iList)
 void unitTest_InsertDomInt(){
     domStudents stuList_test;
     intStudents intList_test;
+
     DomesticStudent* domStudent1;
+    cout << "insert a Domestic Student David Black, CGPA: 4.3, Research Score:100, Province: BC" << endl;
     domStudent1= new DomesticStudent("David","Black",4.3,100,"BC");
 
-
     DomesticStudent* domStudent2;
+    cout << "insert a Domestic Student Neil Green, CGPA: 4.29, Research Score:100, Province: AB" << endl;
     domStudent2 = new DomesticStudent("Neil", "Green", 4.29, 100, "AB");
 
     DomesticStudent* domStudent3;
+    cout << "insert a Domestic Student Neil Green, CGPA: 4.31, Research Score:100, Province: AB" << endl;
     domStudent3 = new DomesticStudent("Neil", "Green", 4.31, 100, "AB");
+
+    DomesticStudent* domStudent4;
+    cout << "insert a Domestic Student Neil Green, CGPA: 4.31, Research Score:100, Province: bc" << endl;
+    domStudent3 = new DomesticStudent("Neil", "Green", 4.31, 100, "bc");
+
+    DomesticStudent* domStudent5;
+    cout << "insert a Domestic Student Neil Green, CGPA: 4.31, Research Score:100, Province: ZZ" << endl;
+    domStudent3 = new DomesticStudent("Neil", "Green", 4.31, 100, "ZZ");
+
 
     stuList_test.insert(domStudent1);
     stuList_test.insert(domStudent2);
-
+    stuList_test.insert(domStudent3);
+    stuList_test.insert(domStudent4);
+    stuList_test.insert(domStudent5);
     stuList_test.printList();
 
+
+    InternationalStudent* intStudent1;
+    cout << "insert an International Student David Black, CGPA: 4.3, Research Score:100, Country: China, ToeflScore: 25,25,25,25" << endl;
+    ToeflScore *tempToefl = new ToeflScore(25,25,25,25);
+    intStudent1 = new InternationalStudent("Neil", "Green",4.3,100,*tempToefl,"China");
+
+    intList_test.printList();
 }
 
 
