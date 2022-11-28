@@ -541,9 +541,8 @@ intStudents::intStudents(){
 
 void intStudents::insert(InternationalStudent* stud){
     ToeflScore tempToefl = stud->getToeflScore();
-    if((tempToefl.getReading()<20) || (tempToefl.getWriting()<20) || (tempToefl.getListening()<20) || (tempToefl.getSpeaking()<20) || (tempToefl.getTotalScore()<93) ){
-        return;
-    }
+    if((tempToefl.getReading()>=20) && (tempToefl.getWriting()>=20) || (tempToefl.getListening()>=20) || (tempToefl.getSpeaking()>=20) || (tempToefl.getTotalScore()>=93) ){
+ 
     if(TopIntStudent==NULL){
         TopIntStudent = stud;
         lastIntStudent = stud;
@@ -602,6 +601,7 @@ void intStudents::insert(InternationalStudent* stud){
         }
 
     }
+}
 
 }
 
