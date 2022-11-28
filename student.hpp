@@ -27,6 +27,7 @@ public:
     void setCGPA(float cgpa);
     void setResearchScore(int score);
     void setID (int ID);
+    void setPassW(int pw);
     //Other member functions
     bool isValid() const;
     void printOutStudent (ostream &outs);
