@@ -975,6 +975,7 @@ void intStudents::Check_Country(intStudents head)
 {
     InternationalStudent* here = head.getTop();
     bool flag =false;
+    bool flag_typo =false;
    int count =0; //Flag to recall the number of targets exist in the linked list
    if(here == NULL)
    {
@@ -1023,6 +1024,7 @@ void intStudents::Check_Country(intStudents head)
                     CountryStr = "CANADA";
                     cout << "It's a typo and fixes it to Canada"<< endl;
                     cout<< *here << endl;
+                    flag_typo=true;
                    }
                }
             }
@@ -1055,6 +1057,7 @@ void intStudents::Check_Country(intStudents head)
                        CountryStr = "IRAN";
                        cout << "It's a typo and fixes it to Iran"<< endl;
                        cout<< *here << endl;
+                       flag_typo=true;
                    }
                }
            }
@@ -1068,6 +1071,7 @@ void intStudents::Check_Country(intStudents head)
             int O_Number = 0;
             R_Number = 0;
             int E_Number=0;
+            
             if ((CountryStr.length()==5) && (CountryStr != "CHINA") && (CountryStr != "INDIA")&& (CountryStr != "KOREA") )
            {
                  for ( len  = 0; len < CountryStr.length(); len++)
@@ -1118,6 +1122,7 @@ void intStudents::Check_Country(intStudents head)
                        CountryStr = "CHINA";
                        cout << "It's a typo " << here->getCountry()   <<"  and fixes it to China"<< endl;
                        cout<< *here << endl;
+                       flag_typo=true;
                    }
 
                    if (( I_Number==2) && (N_Number==1) && (D_Number==1) && (A_Number==1) )
@@ -1125,12 +1130,14 @@ void intStudents::Check_Country(intStudents head)
                        CountryStr = "INDIA";
                        cout << "It's a typo "<<  here->getCountry()  <<" and fixes it to India"<< endl;
                        cout<< *here << endl;
+                       flag_typo=true;
                    }
                   if (( K_Number==1) && (O_Number==1) && (R_Number==1) && (E_Number==1)&& (A_Number==1)  )
                    {
                        CountryStr = "KOERA";
                        cout << "It's a typo " << here->getCountry()  <<" and fixes it to Korea"<< endl;
                        cout<< *here << endl;
+                       flag_typo=true;
                    }
 
                 }
@@ -1151,9 +1158,9 @@ void intStudents::Check_Country(intStudents head)
        
             here = here->nextInt;
      }
-     if (flag == false)
+     if ((flag == false) && (flag_typo == true))
         {
-            cout <<" All records about the Countries are correct."<< endl;
+            cout <<" All records about the Countries are correct after fixing the typo."<< endl;
         }
    }  
 }
