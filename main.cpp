@@ -229,9 +229,69 @@ int main(){
 
    
      }
+    
+    char choice;
+    cout<<"Please select from a to c: "<<endl;
+    cout<<"a for administrator" << endl;
+    cout<<"b for domestic student"<<endl;
+    cout<<"c for international student"<<endl;
+    cin>> choice;
+    
+    if(choice > 'c' || choice < 'a')
+     {
+       cout << "Please write letter between a and c" << endl;
+       exit(1);
+     }
 
+     if(choice == 'b'){
+	int id;
+	int pw;
+	cout<<"Please enter ID and password"<< endl;
+	cout<<"ID: ";
+	cin >> id;
+	cout<<"Password: ";
+	cin >> pw;
+        if (stuList.isVerified(id, pw)) {
+	 stuList.Search(stuList, id);
+	 cout << "Application Status: Processing" << endl;
+	 
+        }
+	else{
+	 
+	 stuList.Search(stuList, id);
+	 cout << "Applicaiton Status: Fail" << endl;
+	
+	}	
+     }
 
+     if(choice == 'c'){
+	int id;
+	int pw;
+	cout<<"Please enter ID and password"<< endl;
+	cout<<"ID: ";
+	cin >> id;
+	cout<<"Password: ";
+	cin >> pw;
+        if (intList.isVerified(id, pw)) {
+	 intList.Search(intList, id);
+	 cout << "Application Status: Processing" << endl;
+	 
+        }
+	else{
+	 
+	 intList.Search(intList, id);
+	 cout << "Applicaiton Status: Fail" << endl;
+	
+	}	
+     }
+
+    if(choice == 'a'){
+	    
     char choose;
+    string domFN;
+    string domLN;
+    string intFN;
+    string intLN;
     for(int k = 1; k < 100; k++)
     {
      cout <<"  What do you want?" <<endl;
@@ -239,17 +299,19 @@ int main(){
      cout <<"  B for Printing All Sorted International-stu Document" << endl;
      cout <<"  C for Merge the demestic student and the international student and print the list" << endl;
      cout <<"  D for Perform the unit test for all search functions" <<endl;
-     cout <<"  E for "<<endl;
-     cout <<"  F for " <<endl;
-     cout <<"  G for stop" << endl;  
+     cout <<"  E for Delete domestic student by name"<<endl;
+     cout <<"  F for Delete international student by name" <<endl;
+     cout <<"  G for Delete head and tail from Domestic-stu Document"<<endl;
+     cout <<"  H for Delete head and tail from International-stu Document"<<endl;
+     cout <<"  I for stop" << endl;   
      cin >> choose;
      
-     if(choose > 'G' || choose < 'A')
+     if(choose > 'I' || choose < 'A')
      {
-       cout << "Please write number between A and G" << endl;
+       cout << "Please write number between A and I" << endl;
        exit(1);
      }
-     if(choose == 'G')
+     if(choose == 'I')
        break;
      else
      {
@@ -274,14 +336,32 @@ int main(){
                 break;
             }
         case 'E':
-            break;
+	     
+             cout<<"Please enter the first name: "<<endl;
+	     cin >> domFN;
+             cout<<"Please enter the first name: "<<endl;
+             cin >> domLN;
+             stuList.deleteDom(domFN,domLN);
+             break;
         case 'F':
-            break;
+             cout<<"Please enter the first name: "<<endl;
+	     cin >> intFN;
+             cout<<"Please enter the first name: "<<endl;
+             cin >> intLN;
+             intList.deleteInt(intFN,intLN);  
+             break;
+        case 'G':
+             cout<<"delete top and bottom from domestic student list"<<endl;
+             stuList.deleteDom();
+	     break;
+        case 'H':
+             cout<<"delete top and bottom from international student list"<<endl;
+             intList.deleteInt();
+	     break;
       }
     }
- 
-}
-
+    }
+    }
 
 
      /*** //User id password
