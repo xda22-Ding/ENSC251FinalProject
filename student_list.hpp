@@ -47,8 +47,7 @@ public:
     //This Search Function is to find some domestic students satisfied requirements of Name 2c
     void Search(domStudents head, string FirstName, string LastName);
     
-    //This function insert a new node in the linked list based on the required order 2d
-    //void insert(domStudents dom_list, DomesticStudent* stud);
+    
     int totalStudent();
     float rankStudent(DomesticStudent* objectStud);
     
@@ -93,8 +92,7 @@ public:
     //This Search Function is to find some international students satisfied requirements of Name 2c
     void Search(intStudents head, string FirstName, string LastName);
     
-    //This function insert a new node in the linked list based on the required order 2d
-    //void insert( intStudents int_list ,  InternationalStudent* stud);
+   
     int totalStudent();
     
     void deleteInt(string fn,string ln);
