@@ -379,7 +379,7 @@ string domStudents::checKDomInput(string name){
 //check if password mathces ID (innovation3)
 bool domStudents::isVerified(int ID, int PW) const{
     DomesticStudent* Stud = TopStudent;
-    while(Stud != lastStudent)
+    while(Stud != lastStudent->nextDom)
     {
         if(Stud->getAppID() == ID && Stud->getPassW() == PW){
 		return true;
@@ -959,7 +959,7 @@ string intStudents::checKIntInput(string name){
 //check if password mathces ID (innovation3)
 bool intStudents::isVerified(int ID, int PW) const{
     InternationalStudent* Stud = TopIntStudent;
-    while(Stud != lastIntStudent)
+    while(Stud != lastIntStudent->nextInt)
     {
         if(Stud->getAppID() == ID && Stud->getPassW() == PW){
 		return true;
