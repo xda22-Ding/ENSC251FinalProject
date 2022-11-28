@@ -119,6 +119,46 @@ void unitTest_Search(domStudents &dList, intStudents &iList)
     cgpaThreshold = 4.33;
     researchThreshold = 100;
     mergedStudent.searchThreshold(cgpaThreshold, researchThreshold);
+	
+    //delete by name
+    //normal case
+    cout << endl;
+    cout << "1.Deletion normal case: " << endl;
+    cout << "Delete Emily Rivera in domestic student list: " << endl;
+    dList.deleteDom("Emily", "Rivera");
+    cout << "Delete Mohammad Darbandi in international student list: " << endl;
+    iList.deleteInt("Mohammad", "Darbandi");
+
+    //cornar case head
+    cout << "2.Cornar case head: " << endl;
+    cout << "Delete Elizabeth Cooper in domestic student list: " << endl;
+    dList.deleteDom("Elizabeth", "Cooper");
+    cout << "Delete Ting Fang in international student list: " << endl;
+    iList.deleteInt("Ting", "Fang");
+
+    //cornar case tail
+    cout << "2.Cornar case tail: " << endl;
+    cout << "Delete Violet Simmons in domestic student list: " << endl;
+    dList.deleteDom("Violet", "Simmons");
+    cout << "Delete Layla Shirvani in international student list: " << endl;
+    iList.deleteInt("Layla", "Shirvani");
+
+    //error case: delete a student does not exist
+    cout <<"3.Error case: "<<endl;
+    cout << "Delete a Student that not exit in the List" << endl;
+    string fname = "Tom";
+    string lname = "Luo";
+    cout << "Delete Tom Luo in domestic student list: " << endl;
+    dList.deleteDom(fname, lname);
+    cout << "Delete Tom Luo in international student list: " << endl;
+    iList.deleteInt(fname, lname);
+
+    //check name input
+    cout << "4.Check name input: " << endl;
+    cout << "Delete lIaM EDwArds (Liam Edward) in domestic student list: " << endl;
+    dList.deleteDom("lIaM", "EDwArds");
+    cout << "Delete hyunJoon ChoI (Hyunjoon Choi) in international student list: " << endl;
+    iList.deleteInt("hyunJoon", "ChoI");
     
 }
 
