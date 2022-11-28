@@ -427,6 +427,18 @@ bool domStudents::isVerified(int ID, int PW) const{
     return false;
 }
 
+//reset password
+void domStudents::resetPW(int id, int pw){
+    DomesticStudent* Stud = TopStudent;
+    while(Stud != lastStudent->nextDom)
+    {
+        if(Stud->getAppID() == id){
+            Stud->setPassW(pw);
+        }
+	    Stud = Stud->nextDom;
+    }
+}
+
 // Part2 3
 void domStudents::Check_Provence(domStudents head)
 {
@@ -885,6 +897,18 @@ bool intStudents::isVerified(int ID, int PW) const{
 	Stud = Stud->nextInt;
     }
     return false;
+}
+
+//reset password
+void intStudents::resetPW(int id, int pw){
+    InternationalStudent* Stud = TopIntStudent;
+    while(Stud != lastIntStudent->nextInt)
+    {
+        if(Stud->getAppID() == id){
+            Stud->setPassW(pw);
+        }
+	    Stud = Stud->nextInt;
+    }
 }
 
 // Part2 3
