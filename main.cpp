@@ -479,16 +479,24 @@ int main(){
      cout <<"  G for Delete head and tail from Domestic-stu Document"<<endl;
      cout <<"  H for Delete head and tail from International-stu Document"<<endl;
      cout <<"  I for Perform unit test for insert DomesticStudent(InternationalStudent) object into the DomesticStudent(InternationalStudent list)"<<endl;
-     cout <<"  J for stop" << endl;  
-     cout <<"  K for a data summary of students CGPA and Research Score" << endl; 
+     cout <<"  J for a data summary of students CGPA and Research Score" << endl; 
+      cout<<"  K. Check Province Name of All Sorted Domestic-stu Document" << endl;
+      cout<<"  L. Check Typo Of Country's Name of All Sorted International-stu Document" <<endl;
+      cout<<"  M. Obtain Some Domestic Students Information"<<endl;
+      cout<<"  N. Obtain Some International Students Information"<<endl;
+      cout<<"  O. Insert New Domstic Students" <<endl; 
+      cout<<"  P. Insert New International Students" <<endl;
+      cout<<"  Q. Students Satisfied Special Requirement" <<endl;
+	    
+     cout <<"  R for stop" << endl;  
+     
      cin >> choose;
      
-     if(choose > 'K' || choose < 'A')
+     if(choose > 'R' || choose < 'A')
      {
-       cout << "Please write number between A and I" << endl;
-       exit(1);
+       cout << "Please write number between A and R" << endl;
      }
-     if(choose == 'J')
+     if(choose == 'R')
        break;
      else
      {
@@ -538,10 +546,304 @@ int main(){
         case 'I':
             unitTest_InsertDomInt();
             break;
-        case 'K':
+        case 'J':
             Students s_list;
             s_list = mergeList(stuList, intList);
             s_list.dataSummary();
+	 case 'K':
+          {              
+	     stuList.Check_Provence(stuList);
+              break;
+          }
+        case 'L':
+          {
+              intList.Check_Country(intList);
+              break;
+          }
+         /*case 'M':
+           { 
+             char answerL;
+             cout << "If you want to see the Domestic students satisfying some requirements. Please input y, any other char back to previous menu" << endl;
+             cin >> answerL;
+           while ((answerL == 'Y') || (answerL == 'y'))
+            {           
+             cout << "1. CGPA Requirement (float number between 0.00 and 4.33)"<< endl;
+             cout << "2. Research Score Requirement(integer number between 70 annd 100)" <<endl;
+             cout << "3. Application ID Requirement(integer number between " <<endl;
+             cout << "4. First Name And Last Name Requirement" <<endl;
+             cout << " Please input your choice" <<endl;
+             int Choose_Dom;
+             int Score_ID;
+             float C_GPA;
+             string First;
+             string Last;
+             cin >> Choose_Dom;
+             switch(Choose_Dom)          
+                {
+                    case 1:
+                         {
+                          cout <<"Please Input the CGPA Requirement" <<endl;
+                          cin >> C_GPA;
+                          if((C_GPA < 0) || (C_GPA > 4.33))
+                          {
+                            cout <<"Please input float number between 0.00 and 4.33"<<endl;
+                            break;
+                          }
+                          else
+                          {
+                            stuList.Search(stuList, C_GPA);
+                            break;
+                          }
+                         }
+                    case 2:
+                        {
+                          cout <<"Please Input the Research Score Requirement" <<endl;
+                          cin >> Score_ID;
+                          stuList.Search(stuList, Score_ID);
+                          break;
+                        }  
+                    case 3:
+                       {
+                          cout <<"Please Input the Application ID Requirement" <<endl;
+                          cin >> Score_ID;
+                          if((Score_ID < 20220000) || (Score_ID> 20230000))
+                          {
+                            cout <<"Please Input integer number between 20220000 and 20230000"<<endl;
+                            break;
+                          }
+                          else
+                          {
+                            stuList.Search(stuList, Score_ID);
+                            break;
+                          }
+                       } 
+                    case 4:
+                       {
+                          cout <<"Please Input the First Namr Requirement" <<endl;
+                          cin >>First;
+                          First = stuList.checKDomInput(First);
+                          cout <<"Please Input the Last Namr Requirement" <<endl;
+                          cin >>Last;
+                          Last = stuList.checKDomInput(Last);
+                          stuList.Search(stuList, First, Last);
+                          break;
+                       }
+                                                                                           
+                }
+                cout << "If you want to see the another Domestic students satisfying some requirements. Please input y, any other char back to previous menu" << endl;
+                cin >> answerL;
+            }
+            break;     
+           }        
+          case 'N':
+                 {
+                  char answerM;
+                  cout << "If you want to see the International students satisfying some requirements. Please input y, any other char back to previous menu" << endl;
+                  cin >> answerM;
+                  while ((answerM == 'Y') || (answerM == 'y'))
+                  {
+                    cout << "1. International Students CGPA Requirement (float number between 0.00 and 4.33)"<< endl;
+                    cout << "2. Research Score Requirement(integer number between 70 annd 100)" <<endl;
+                    cout << "3. Application ID Requirement(integer number between 20220000 and 20230000 " <<endl;
+                    cout << "4. First Name And Last Name Requirement" <<endl;
+                    cout << " Please input your choice" <<endl;
+                    int Choose_Int;
+                    int IntScore_ID;
+                    float IntC_GPA;
+                    string IntFirst;
+                    string IntLast;
+                    cin >> Choose_Int;
+                    switch(Choose_Int)
+                    {
+                    case 1:
+                         {
+                          cout <<"Please Input the CGPA Requirement" <<endl;
+                          cin >> IntC_GPA;
+                          if((IntC_GPA < 0) || (IntC_GPA > 4.33))
+                          {
+                            cout <<"Please input float number between 0.00 and 4.33"<<endl;
+                            break;
+                          }
+                          else
+                          {
+                            intList.Search(intList, IntC_GPA);
+                            break;
+                          }
+                         }
+                    case 2:
+                        {
+                          cout <<"Please Input the Research Score Requirement" <<endl;
+                          cin >> IntScore_ID;
+                          intList.Search(intList, IntScore_ID);
+                          break;
+                        }  
+                    case 3:
+                       {
+                          cout <<"Please Input the Application ID Requirement" <<endl;
+                           cin >> IntScore_ID;
+                          if((IntScore_ID < 20220000) || (IntScore_ID> 20230000))
+                          {
+                            cout <<"Please Input integer number between 20220000 and 20230000"<<endl;
+                            break;
+                          }
+                          else
+                          {
+                            intList.Search(intList, IntScore_ID);
+                            break;
+                          }
+                       } 
+                    case 4:
+                       {
+                          cout <<"Please Input the First Namr Requirement" <<endl;
+                          cin >>IntFirst;
+                          IntFirst = intList.checKIntInput(IntFirst);
+                          cout <<"Please Input the Last Namr Requirement" <<endl;
+                          cin >>IntLast;
+                          IntLast = intList.checKIntInput(IntLast);
+                          intList.Search(intList, IntFirst, IntLast);
+                          break;
+                       }
+                                                                                              
+                }
+                cout << "If you want to see the another International students satisfying some requirements. Please input y, any other char back to previous menu" << endl;
+                cin >> answerM;
+            }
+            break;           
+        }
+
+          case 'O':
+                {
+                  DomesticStudent* dom_ptr=NULL, dom_stu;
+                  string FN;
+                  string LN, Pro;
+                  float cgpa;
+                  int  R_Sco;
+
+                  cout <<"Please Input The Information Of Students" <<endl;
+                  cout << "1. First Name "<<endl;
+                  cin >> FN;
+                  FN = stuList.checKDomInput(FN);
+                  dom_stu.setFirstName(FN);
+                  cout <<"2. Last Name " <<endl;
+                  cin >> LN;
+                  LN = stuList.checKDomInput(FN);
+                  dom_stu.setLastName(FN);
+                  cout <<"3. Province " <<endl;
+                  cin >> Pro;
+                  dom_stu.setProvince(Pro);
+                  cout <<"4. CGPA" <<endl;
+                  cin >> cgpa;
+                  dom_stu.setCGPA(cgpa);
+                  cout <<"5. Research Score"<<endl;
+                  cin >> R_Sco;
+                  dom_stu.setResearchScore(R_Sco);
+                  dom_ptr = &dom_stu;
+                  stuList.insert( dom_ptr);
+                  stuList.printList();
+                  stuList.Check_Provence(stuList);
+                  break;
+                }
+        case 'P':
+                {
+                  InternationalStudent* int_ptr = NULL, int_stu;
+                  ToeflScore grade_toef;
+                  string H_FN;
+                  string H_LN, H_Con;
+                  float H_cgpa;
+                  int  H_Sco, H_reading, H_listening, H_speaking,H_writing;
+                  cout <<"Please Input The Information Of Students" <<endl;
+                  cout << "1. First Name "<<endl;
+                  cin >> H_FN;
+                  H_FN = intList.checKIntInput(H_FN);
+                  int_stu.setFirstName(H_FN);
+                  cout <<"2. Last Name " <<endl;
+                  cin >> H_LN;
+                  H_LN = intList.checKIntInput(H_FN);
+                  int_stu.setLastName(H_FN);
+                  cout <<"3. Country " <<endl;
+                  cin >> H_Con;
+                  int_stu.setCountry(H_Con);
+                  cout <<"4. CGPA" <<endl;
+                  cin >> H_cgpa;
+                  int_stu.setCGPA(H_cgpa);
+                  cout <<"5. Research Score"<<endl;
+                  cin >> H_Sco;
+                  int_stu.setResearchScore(H_Sco);
+                  cout <<"6.Reading"<<endl;
+                  cin >>H_reading;
+                  grade_toef.setReading(H_reading);
+                  cout <<"7.Listening"<<endl;
+                  cin >>H_listening;
+                  grade_toef.setListening(H_listening);
+                  cout <<"8.Speaking"<<endl;
+                  cin >>H_speaking;
+                  grade_toef.setSpeaking(H_speaking);
+                  cout <<"9.Writing"<<endl;
+                  cin >>H_writing;
+                  grade_toef.setWriting(H_writing);
+                  int_stu.setToeflScore(grade_toef);
+                 int_ptr = &int_stu;
+                 intList.insert(int_ptr);
+                cout << "international students: " << endl;
+ 	            intList.printList();
+                intList.Check_Country(intList);
+                }
+            case 'Q':
+                {
+                    char answer, Dom_int;
+                    int score, subject;
+                    float grade_CGPA;
+                    cout << "If you want to see the detailed information of some students. Please input y, any other char to back to previous menu" << endl;
+                    cin >> answer;
+                    while ((answer == 'Y') || (answer == 'y'))
+                    {
+                      cout << "If you want to see the information of domestic students, please input D"<< endl;
+                      cout << "If you want to see the information of international students, please input I"<< endl;
+                      cin >> Dom_int;
+                      if ( (Dom_int =='D') || (Dom_int == 'd'))
+                        {
+                          cout << "If you want to see the information about CGPA, please input 1" <<endl;
+                          cout << "If you want to see the information about Researchscore, please input 2" <<endl;
+                          cin >> subject;
+                          if (subject == 1)
+                           {
+                            cout << "Please input the lowest of CGPA you concern"<< endl;
+                             cin >> grade_CGPA;
+                             stuList.requireDomCGPA(stuList, grade_CGPA);
+                           }
+                           if (subject == 2)
+                            {
+                              cout << "Please input the lowest of research score you concern"<< endl;
+                              cin >> score;
+                              stuList.requireDomScore(stuList, score);
+                            }
+                         }   
+                      else if ( (Dom_int =='I') || (Dom_int == 'i') )
+                        {
+                        cout << "If you want to see the information about CGPA, please input 1" <<endl;
+                        cout << "If you want to see the information about Researchscore, please input 2" <<endl;
+                        cin >> subject;
+                           if (subject == 1)
+                           {
+                              cout << "Please input the lowest of CGPA you concern"<< endl;
+                              cin >> grade_CGPA;
+                              intList.requireIntCGPA(intList, grade_CGPA);
+                           }
+                           if (subject == 2)
+                           {
+                             cout << "Please input the lowest of research score you concern"<< endl;
+                             cin >> score;
+                             intList.requireIntScore(intList, score);
+                           }
+                        }
+                     else
+                      {
+                        cout << "The information input is wrong. please input again." <<endl;
+                      } 
+                     cout << "If you want to set another requirement to see the information of students. Please input y, any other char back to previous menu" << endl;
+                     cin >> answer;
+                    }            
+                }*/
       }
     }
     }
