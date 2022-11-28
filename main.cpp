@@ -237,8 +237,8 @@ int main(){
      cout <<"  What do you want?" <<endl;
      cout <<"  A for Printing All Sorted Domestic-stu Document" << endl;
      cout <<"  B for Printing All Sorted International-stu Document" << endl;
-     cout <<"  C for " << endl;
-     cout <<"  D for " <<endl;
+     cout <<"  C for Merge the demestic student and the international student and print the list" << endl;
+     cout <<"  D for Perform the unit test for all search functions" <<endl;
      cout <<"  E for "<<endl;
      cout <<"  F for " <<endl;
      cout <<"  G for stop" << endl;  
@@ -262,9 +262,17 @@ int main(){
             intList.printList();
             break;
         case 'C':
-            break;
+            {
+                Students s_list;
+                s_list = mergeList(stuList, intList);
+                s_list.printList();
+                break;
+            }
         case 'D':
-            break;           
+            {
+                unitTest_Search(stuList, intList);
+                break;
+            }
         case 'E':
             break;
         case 'F':

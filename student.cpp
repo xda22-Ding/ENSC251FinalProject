@@ -91,9 +91,7 @@ bool Student::isValid() const
 
 void Student::printOutStudent(ostream &outs)
 {
-    string fristname = getFirstName();
-    string lastname = getLastName();
-    outs << fristname << "      " << lastname << "      " << getAppID() << "      " << getResearchScore() << "      " << getCGPA() << "      " << getAppID() << endl;;
+    outs << "Student : " <<getFirstName() << " "<< getLastName() << ". " <<"CGPA : " <<getCGPA() << " Research Score: " << getResearchScore() << " Student ID: " << getAppID() << endl;
 }
 
 ostream &operator << (ostream &out, Student stu)
