@@ -547,9 +547,12 @@ int main(){
             unitTest_InsertDomInt();
             break;
         case 'J':
+	  {
             Students s_list;
             s_list = mergeList(stuList, intList);
             s_list.dataSummary();
+	    break;
+	  }
 	 case 'K':
           {              
 	     stuList.Check_Provence(stuList);
@@ -560,7 +563,7 @@ int main(){
               intList.Check_Country(intList);
               break;
           }
-         /*case 'M':
+         case 'M':
            { 
              char answerL;
              cout << "If you want to see the Domestic students satisfying some requirements. Please input y, any other char back to previous menu" << endl;
@@ -843,7 +846,7 @@ int main(){
                      cout << "If you want to set another requirement to see the information of students. Please input y, any other char back to previous menu" << endl;
                      cin >> answer;
                     }            
-                }*/
+                }
       }
     }
     }
