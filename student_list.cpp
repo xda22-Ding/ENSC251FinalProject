@@ -530,70 +530,7 @@ void domStudents::requireDomScore(domStudents head, int target)
    }
 }
 
-// Based on the definition of order to insert new student to  the student's data
-/*void domStudents::insert(domStudents dom_list, DomesticStudent* stud){
 
-    DomesticStudent* here = dom_list.getTop();//Set pointer "here" to point the top of linked list of domestic student
-    if( here ==NULL){
-        TopStudent = stud;
-        lastStudent = stud;
-    }
-    else{
-        DomesticStudent* tempStud = here; // Creat the temp pointer to exchange the data
-        if(compareResearchScore(*stud,*tempStud) == 1){
-            stud->nextDom = tempStud;
-            here = stud;
-            return;
-          }
-        else if(compareResearchScore(*stud,*tempStud) == 3){
-            if(compareCGPA(*stud,*tempStud) == 1){
-                stud->nextDom = tempStud;
-                here = stud;
-                return;
-            }
-            else if(compareCGPA(*stud,*tempStud) == 3){
-                if(compareProvince(stud,tempStud) == 1){
-                    stud->nextDom = tempStud;
-                    here = stud;
-                    return;
-                }
-            }
-        }
-
-
-        // Based on the requirement to arrange the order between two students
-        while(tempStud != lastStudent ){
-            if(compareResearchScore(*stud,*tempStud->nextDom) == 1){
-                stud->nextDom = tempStud->nextDom;
-                tempStud->nextDom = stud;
-                return;
-            }
-            else if(compareResearchScore(*stud,*tempStud->nextDom) == 3){
-                if(compareCGPA(*stud,*tempStud->nextDom) == 1){
-                    stud->nextDom = tempStud->nextDom;
-                    tempStud->nextDom = stud;
-                    return;
-                }
-                else if(compareCGPA(*stud,*tempStud->nextDom) == 3){
-                    if(compareProvince(stud,tempStud->nextDom) == 1){
-                        stud->nextDom = tempStud->nextDom;
-                        tempStud->nextDom = stud;
-                        return;
-                    }
-                }
-            }
-
-
-            tempStud = tempStud -> nextDom;
-        }
-        if(tempStud == lastStudent){
-            tempStud->nextDom = stud;
-            lastStudent = stud;
-        }
-    
-    }
-
-}*/
 /*------------Domestic Student Linked List----------------*/
 
 /*------------International Student Linked List----------------*/
@@ -777,68 +714,7 @@ void intStudents:: Search (intStudents head,string FirstName, string LastName)
      }
    }
 
-/*void intStudents::insert(intStudents int_list , InternationalStudent* stud){
 
-      InternationalStudent* here = int_list.getTop();
-    if(here==NULL){
-        TopIntStudent = stud;
-        lastIntStudent = stud;
-    }
-    else{
-        InternationalStudent* tempIntStud = here;
-        if(compareResearchScore(*stud,*tempIntStud) == 1){
-            stud->nextInt = tempIntStud;
-            here = stud;
-            return;
-        }
-        else if(compareResearchScore(*stud,*tempIntStud)==3){
-            if(compareCGPA(*stud,*tempIntStud) == 1){
-                stud->nextInt = tempIntStud;
-                here = stud;
-                return;
-            }
-            else if(compareCGPA(*stud,*tempIntStud) == 3){
-                if(compareCountry(stud,tempIntStud) == 1){
-                    stud->nextInt = tempIntStud;
-                    here = stud;
-                    return;
-                }
-            }
-
-        }
-
-
-        while(tempIntStud != lastIntStudent ){
-            if(compareResearchScore(*stud,*tempIntStud->nextInt) == 1){
-                stud->nextInt = tempIntStud->nextInt;
-                tempIntStud->nextInt = stud;
-                break;
-            }
-            else if(compareResearchScore(*stud,*tempIntStud->nextInt) == 3){
-                if(compareCGPA(*stud,*tempIntStud->nextInt) == 1){
-                    stud->nextInt = tempIntStud->nextInt;
-                    tempIntStud->nextInt = stud;
-                    break;
-                }
-                else if(compareCGPA(*stud,*tempIntStud->nextInt) == 3){
-                    if(compareCountry(stud,tempIntStud->nextInt) == 1){
-                        stud->nextInt = tempIntStud->nextInt;
-                        tempIntStud->nextInt = stud;
-                        break;
-                    }
-                }
-            }
-
-
-            tempIntStud = tempIntStud -> nextInt;
-        }
-        if(tempIntStud == lastIntStudent){
-            tempIntStud->nextInt = stud;
-            lastIntStudent = stud;
-        }
-
-    }
-}*/
 
 
 int domStudents::totalStudent(){
