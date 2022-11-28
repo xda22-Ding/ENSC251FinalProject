@@ -20,6 +20,7 @@ public:
     void insertMix(Student* stud);
     void searchThreshold(float cgpaThreshold, int researchThreshold);
     virtual void printList();
+    void dataSummary();
 private:
     Student* TopStudent;
     Student* lastStudent;

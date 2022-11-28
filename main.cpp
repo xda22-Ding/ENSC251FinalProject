@@ -479,10 +479,11 @@ int main(){
      cout <<"  G for Delete head and tail from Domestic-stu Document"<<endl;
      cout <<"  H for Delete head and tail from International-stu Document"<<endl;
      cout <<"  I for Perform unit test for insert DomesticStudent(InternationalStudent) object into the DomesticStudent(InternationalStudent list)"<<endl;
-     cout <<"  J for stop" << endl;   
+     cout <<"  J for stop" << endl;  
+     cout <<"  K for a data summary of students CGPA and Research Score" << endl; 
      cin >> choose;
      
-     if(choose > 'I' || choose < 'A')
+     if(choose > 'K' || choose < 'A')
      {
        cout << "Please write number between A and I" << endl;
        exit(1);
@@ -537,6 +538,10 @@ int main(){
         case 'I':
             unitTest_InsertDomInt();
             break;
+        case 'K':
+            Students s_list;
+            s_list = mergeList(stuList, intList);
+            s_list.dataSummary();
       }
     }
     }

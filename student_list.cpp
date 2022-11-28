@@ -93,6 +93,41 @@ void Students::printList()
     }
 }
 
+void Students::dataSummary(){
+    Student* tempStud = TopStudent;
+    int totalStudent = 0;
+    float CGPAsum = 0;
+    float CGPAmean;
+    float stdCGPA;
+    float researchScoresum =0;
+    float researchScoremean;
+    float stdRS;
+    tempStud = TopStudent;
+    while(tempStud != NULL)
+    {
+        CGPAsum = CGPAsum + tempStud->getCGPA();
+        researchScoresum = researchScoresum + tempStud->getResearchScore();
+        totalStudent++;
+        tempStud = tempStud->next;
+    }
+
+    CGPAmean = CGPAsum/totalStudent;
+    researchScoremean = researchScoresum/totalStudent;
+    tempStud = TopStudent;
+    while(tempStud != NULL)
+    {
+        stdCGPA += pow(tempStud->getCGPA() - CGPAmean, 2);
+        stdRS += pow(tempStud->getResearchScore() - researchScoremean, 2);
+        tempStud = tempStud->next;
+    }
+    stdCGPA = sqrt(stdCGPA/10);
+    stdRS = sqrt(stdRS/10);
+    cout << "The mean of CGPA is: " << CGPAmean << "; The standard deviation of CGPA is " <<stdCGPA << endl;
+    cout << "The mean of Research Score is: " << researchScoremean << "; The standard deviation of Research Score is " << stdRS << endl;
+
+
+}
+
 /*--------------Student Linked List----------------*/
 
 /*------------Domestic Student Linked List----------------*/
