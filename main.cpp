@@ -576,6 +576,10 @@ int main(){
       cout<<"  Q. Students Satisfied Special Requirement" <<endl; //innovation2
 	    
      cout <<"  R for stop" << endl;  
+    cout<<"  S. rank an International Student" <<endl; //innovation1
+    cout<<"  T. rank a Domestic Student" <<endl; //innovation1
+
+
      
      cin >> choose;
      
@@ -933,6 +937,37 @@ int main(){
                      cout << "If you want to set another requirement to see the information of students. Please input y, any other char back to previous menu" << endl;
                      cin >> answer;
                     }            
+                }
+
+            case 'S':
+                {
+                    string IntFirst;
+                    string IntLast;
+                    cout <<"Please Input the First Name" <<endl;
+                    cin >>IntFirst;
+                    IntFirst = intList.checKIntInput(IntFirst);
+                    cout <<"Please Input the Last Name" <<endl;
+                    cin >>IntLast;
+                    IntLast = intList.checKIntInput(IntLast);
+                    InternationalStudent *intStudent_rank = intList.Search1(intList, IntFirst, IntLast);
+                    cout << intList.rankStudent(intStudent_rank) << endl;
+                    break;
+
+                }
+            case 'T':
+                {
+                    string IntFirst;
+                    string IntLast;
+                    cout <<"Please Input the First Name" <<endl;
+                    cin >>IntFirst;
+                    IntFirst = intList.checKIntInput(IntFirst);
+                    cout <<"Please Input the Last Name" <<endl;
+                    cin >>IntLast;
+                    IntLast = intList.checKIntInput(IntLast);
+                    DomesticStudent *domStudent_rank = stuList.Search1(stuList, IntFirst, IntLast);
+                    cout << stuList.rankStudent(domStudent_rank) << endl;
+                    break;
+
                 }
       }
     }

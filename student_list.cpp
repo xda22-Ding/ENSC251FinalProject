@@ -315,6 +315,33 @@ void domStudents:: Search (domStudents head,string FirstName, string LastName)
      }
    }
 
+DomesticStudent* domStudents:: Search1 (domStudents head,string FirstName, string LastName)
+{
+   DomesticStudent* here = head.getTop();
+   domStudents Case;
+   int count =0;
+   if(here == NULL)
+   {
+     return NULL;
+   }
+   else
+   {
+      while (here != NULL)
+    {
+           if((here->getFirstName() == Case.checKDomInput(FirstName)) && (here->getLastName()== Case.checKDomInput(LastName)))
+             {
+                count =count +1;
+        return here;
+             }
+          here = here->nextDom;
+     }
+    }
+    if ( count ==0 )
+     {
+       return NULL;
+     }
+   }
+
 
 
 // 2 e delete base on name
@@ -739,6 +766,34 @@ void intStudents:: Search (intStudents head,string FirstName, string LastName)
      }
    }
 
+InternationalStudent* intStudents:: Search1(intStudents head,string FirstName, string LastName)
+{
+   intStudents Case; 
+   InternationalStudent* here = head.getTop();
+   int count =0;
+   if(here == NULL)
+   {
+         return NULL;
+   }
+   else
+   {
+      while (here != NULL)
+    {
+           if((here->getFirstName() == Case.checKIntInput(FirstName)) && (here->getLastName()== Case.checKIntInput(LastName)))
+              {
+                 count =count +1;
+         return here;
+              }
+             here = here->nextInt;
+        }
+    }
+       
+     if ( count ==0 )
+     {
+       return NULL;
+     }
+   }
+
 
 
 
@@ -776,6 +831,20 @@ int intStudents::totalStudent(){
     }
 
     return total;
+}
+
+float intStudents::rankStudent(InternationalStudent* objectStud){
+    InternationalStudent *tempStud = TopIntStudent;
+    int rank = 1;
+    while(tempStud != objectStud){
+        rank++;
+        tempStud = tempStud->nextInt;
+    }
+    int total = totalStudent();
+    float result = (float) rank/ (float) total;
+    return result;
+
+
 }
 
 

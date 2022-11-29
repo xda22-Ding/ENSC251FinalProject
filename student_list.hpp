@@ -46,7 +46,8 @@ public:
 
     //This Search Function is to find some domestic students satisfied requirements of Name 2c
     void Search(domStudents head, string FirstName, string LastName);
-    
+    DomesticStudent* Search1 (domStudents head,string FirstName, string LastName);
+
     
     int totalStudent();
     float rankStudent(DomesticStudent* objectStud);
@@ -92,9 +93,11 @@ public:
     
     //This Search Function is to find some international students satisfied requirements of Name 2c
     void Search(intStudents head, string FirstName, string LastName);
-    
+    InternationalStudent* Search1(intStudents head, string FirstName, string LastName);
+ 
    
     int totalStudent();
+    float rankStudent(InternationalStudent* objectStud);
     
     void deleteInt(string fn,string ln);
     void deleteInt();
