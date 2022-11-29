@@ -998,6 +998,23 @@ void intStudents::Check_Country(intStudents head)
     bool flag =false;
     bool flag_typo =false;
    int count =0; //Flag to recall the number of targets exist in the linked list
+   fstream File;
+   
+      File.open("newstu.txt", ios::out);
+      if(File.fail())
+      {
+        cout << "Input file opening failed." << endl;
+        exit(1);
+      }
+
+      if(!File.is_open()) {
+        cout << "Unable to open file domestic-stu.txt" << endl;
+        exit(1);
+      }
+  
+      
+       
+       
    if(here == NULL)
    {
      cout << "The object is empty."<< endl;
@@ -1014,12 +1031,17 @@ void intStudents::Check_Country(intStudents head)
            {
               CountryStr[len]=toupper(CountryStr[len]);
            }
-          int C_Number=0;
-          int A_Number =0;
-          int N_Number =0;
-          int D_Number =0;
+         
+
           if ((CountryStr.length()==6) && CountryStr != "CANADA" )
               {   
+                  int C_Number=0;
+                  int A_Number =0;
+                   int N_Number =0;
+                    int D_Number =0;
+                    int I_Number =0;
+                    int R_Number=0;
+
                 for ( len  = 0; len < CountryStr.length(); len++)
                  {
                   if ( CountryStr[len]== 'C')
@@ -1045,16 +1067,22 @@ void intStudents::Check_Country(intStudents head)
                     CountryStr = "CANADA";
                     cout << "It's a typo and fixes it to Canada"<< endl;
                     cout<< *here << endl;
+                    File<< *here <<endl;
                     flag_typo=true;
                    }
                }
             }
-            int I_Number=0;
-            int R_Number =0;
-            A_Number =0;
-            N_Number =0;
-            if ((CountryStr.length()==4) && CountryStr != "IRAN" )
+          
+          
+            else if ((CountryStr.length()==4) && CountryStr != "IRAN" )
              {
+                    int C_Number=0;
+                  int A_Number =0;
+                   int N_Number =0;
+                    int D_Number =0;
+                    int I_Number =0;
+                    int R_Number=0;
+
                  for ( len  = 0; len < CountryStr.length(); len++)
                  {
                    if ( CountryStr[len]== 'I')
@@ -1078,23 +1106,26 @@ void intStudents::Check_Country(intStudents head)
                        CountryStr = "IRAN";
                        cout << "It's a typo and fixes it to Iran"<< endl;
                        cout<< *here << endl;
+                       File<< *here <<endl;
                        flag_typo=true;
                    }
                }
            }
-            C_Number = 0;
+          
+           else if ((CountryStr.length()==5) && (CountryStr != "CHINA") && (CountryStr != "INDIA")&& (CountryStr != "KOREA") )
+           {
+              int C_Number = 0;
             int H_Number = 0;
-            I_Number = 0;
-            N_Number = 0;
-            A_Number = 0;
-            D_Number = 0;
+            int I_Number = 0;
+            int N_Number = 0;
+            int A_Number = 0;
+            int D_Number = 0;
             int K_Number = 0;
             int O_Number = 0;
-            R_Number = 0;
+            int R_Number = 0;
             int E_Number=0;
             
-            if ((CountryStr.length()==5) && (CountryStr != "CHINA") && (CountryStr != "INDIA")&& (CountryStr != "KOREA") )
-           {
+
                  for ( len  = 0; len < CountryStr.length(); len++)
                {
                    if ( CountryStr[len]== 'C')
@@ -1142,16 +1173,20 @@ void intStudents::Check_Country(intStudents head)
                    {
                        CountryStr = "CHINA";
                        cout << "It's a typo " << here->getCountry()   <<"  and fixes it to China"<< endl;
+                       here->setCountry("China");
                        cout<< *here << endl;
                        flag_typo=true;
+                       File<< *here <<endl;
                    }
 
                    if (( I_Number==2) && (N_Number==1) && (D_Number==1) && (A_Number==1) )
                    {
                        CountryStr = "INDIA";
                        cout << "It's a typo "<<  here->getCountry()  <<" and fixes it to India"<< endl;
+                        here->setCountry("India");
                        cout<< *here << endl;
                        flag_typo=true;
+                     File<< * here <<endl;
                    }
                   if (( K_Number==1) && (O_Number==1) && (R_Number==1) && (E_Number==1)&& (A_Number==1)  )
                    {
@@ -1159,9 +1194,14 @@ void intStudents::Check_Country(intStudents head)
                        cout << "It's a typo " << here->getCountry()  <<" and fixes it to Korea"<< endl;
                        cout<< *here << endl;
                        flag_typo=true;
+                        File<< *here <<endl;
                    }
 
                 }
+           }
+           else 
+           {
+            File << *here<<endl;
            }           
            tempStr = CountryStr;
            if ((tempStr == "CHINA") || (tempStr == "CANADA") || (tempStr == "INDIA") || (tempStr == "IRAN") || 
@@ -1183,7 +1223,9 @@ void intStudents::Check_Country(intStudents head)
         {
             cout <<" All records about the Countries are correct after fixing the typo."<< endl;
         }
+
    }  
+    File.close();
 }
 // innovation2
 void intStudents::requireIntCGPA(intStudents head, float target)
