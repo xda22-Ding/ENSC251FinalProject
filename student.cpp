@@ -76,7 +76,7 @@ void Student::setPassW(int pw){
 //Other member functions
 bool Student::isValid() const
 {
-    if(CGPA < 0 || CGPA > 4.3)
+    if(CGPA < 0 || CGPA > 4.33)
     {
         cout << "the CGPA is invalid. " << endl;
         exit(1);
