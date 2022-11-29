@@ -500,7 +500,7 @@ void domStudents::requireDomCGPA(domStudents head, float target)
      // Search whole linked list to check if or not have target
      while (here != NULL)
      {
-            if( here->getCGPA() > target )// The condtion to judge if or not exist the required target
+            if( here->getCGPA() >= target )// The condtion to judge if or not exist the required target
            {
               count =count +1;
               cout << *here << endl;
@@ -528,7 +528,7 @@ void domStudents::requireDomScore(domStudents head, int target)
      // Search whole linked list to check if or not have target
      while (here != NULL)
      {
-            if( here->getResearchScore() > target )// The condtion to judge if or not exist the required target
+            if( here->getResearchScore() >= target )// The condtion to judge if or not exist the required target
            {
               count =count +1;
               cout << *here << endl;
@@ -1128,7 +1128,7 @@ void intStudents::requireIntCGPA(intStudents head, float target)
      // Search whole linked list to check if or not have target
      while (here != NULL)
      {
-          if( here->getCGPA() > target )// The condtion to judge if or not exist the required target
+          if( here->getCGPA() >= target )// The condtion to judge if or not exist the required target
            {
               count =count +1;
               cout << *here << endl;
@@ -1156,7 +1156,7 @@ void intStudents::requireIntScore(intStudents head, int target)
      // Search whole linked list to check if or not have target
      while (here != NULL)
      {
-            if( here->getResearchScore() > target )// The condtion to judge if or not exist the required target
+            if( here->getResearchScore() >= target )// The condtion to judge if or not exist the required target
            {
               count =count +1;
               cout << *here << endl;
