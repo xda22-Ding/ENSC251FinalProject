@@ -441,43 +441,94 @@ int main(){
      }
 
      if(choice == 'b'){
-	int id;
-	int pw;
-	cout<<"Please enter ID and password"<< endl;
-	cout<<"ID: ";
-	cin >> id;
-	cout<<"Password: ";
-	cin >> pw;
+        int id;
+        int pw;
+        cout<<"Please enter ID and password"<< endl;
+        cout<<"ID: ";
+        cin >> id;
+        cout<<"Password: ";
+        cin >> pw;
         if (stuList.isVerified(id, pw)) {
-	 stuList.Search(stuList, id);
-	 cout << "Application Status: Processing" << endl;
-	 
-        }
+            stuList.Search(stuList, id);
+            cout << "Application Status: Processing" << endl;
+            int a;
+            cout << endl;
+            cout <<"Enter 1 for reset password"<<endl;
+            cout <<"Enter 2 for exit"<<endl;
+            cin >> a;
+            if (a == 1){
+              int newPW;
+              cout<<"Please enter your new password (ONLY NUMBERS!): "<< endl;
+              cin >> newPW;
+              stuList.resetPW(id,newPW);
+              cout<<"Please login again"<< endl;
+              int newid;
+              int newpw;
+              cout<<"Please enter ID and password"<< endl;
+              cout<<"ID: ";
+              cin >> newid;
+              cout<<"Password: ";
+              cin >> newpw;
+              if (stuList.isVerified(newid,newpw)){
+                  stuList.Search(stuList, newid);
+                  cout << "Application Status: Processing" << endl;
+              }
+              else{
+                cout<<"No such student"<<endl;
+              }
+            }
+        }         
 	else{
 	 
-	 stuList.Search(stuList, id);
-	 //cout << "Applicaiton Status: Fail" << endl;
+	 //stuList.Search(stuList, id);
+	 cout << "No such student" << endl;
 	
 	}	
      }
 
      if(choice == 'c'){
-	int id;
-	int pw;
-	cout<<"Please enter ID and password"<< endl;
-	cout<<"ID: ";
-	cin >> id;
-	cout<<"Password: ";
-	cin >> pw;
+        int id;
+        int pw;
+        cout<<"Please enter ID and password"<< endl;
+        cout<<"ID: ";
+        cin >> id;
+        cout<<"Password: ";
+        cin >> pw;
         if (intList.isVerified(id, pw)) {
-	 intList.Search(intList, id);
-	 cout << "Application Status: Processing" << endl;
+          intList.Search(intList, id);
+          cout << "Application Status: Processing" << endl;
+            int a;
+            cout << endl;
+            cout <<"Enter 1 for reset password"<<endl;
+            cout <<"Enter 2 for exit"<<endl;
+            cin >> a;
+            if (a == 1){
+              int newPW;
+              cout<<"Please enter your new password (ONLY NUMBERS!): "<< endl;
+              cin >> newPW;
+              intList.resetPW(id,newPW);
+              cout<<"Please login again"<< endl;
+              int newid;
+              int newpw;
+              cout<<"Please enter ID and password"<< endl;
+              cout<<"ID: ";
+              cin >> newid;
+              cout<<"Password: ";
+              cin >> newpw;
+              if (intList.isVerified(newid,newpw)){
+                  intList.Search(intList, newid);
+                  cout << "Application Status: Processing" << endl;
+              }
+              else{
+                cout<<"No such student"<<endl;
+              }
+            }
 	 
         }
 	else{
 	 
-	 intList.Search(intList, id);
-	 //cout << "Applicaiton Status: Fail" << endl;
+	 //intList.Search(intList, id);
+	 cout << "No such student " << endl;
 	
 	}	
      }
