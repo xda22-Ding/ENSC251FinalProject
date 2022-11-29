@@ -19,7 +19,7 @@ void unitTest_Search(domStudents &dList, intStudents &iList)
     string l_name = "Ma";
     cout << "Search Jack Ma in domestic student list: " << endl;
     dList.Search(dList, f_name, l_name);
-    cout << "Search Jack Ma in domestic student list: " << endl;
+    cout << "Search Jack Ma in international student list: " << endl;
     iList.Search(iList, f_name, l_name);
     
     cout << "Search a Student that in the domestic student list (Aurora Foster): " << endl;
@@ -27,13 +27,13 @@ void unitTest_Search(domStudents &dList, intStudents &iList)
     l_name = "Foster";
     cout << "Search Aurora Foster in domestic student list: " << endl;
     dList.Search(dList, f_name, l_name);
-    cout << "Search Aurora Foster in domestic student list: " << endl;
+    cout << "Search Aurora Foster in international student list: " << endl;
     iList.Search(iList, f_name, l_name);
     
     cout << "Search a Student that in the international student list (Ting Fang): " << endl;
     f_name = "Ting";
     l_name = "Fang";
-    cout << "Search Ting Fang in international student list: " << endl;
+    cout << "Search Ting Fang in domestic student list: " << endl;
     dList.Search(dList, f_name, l_name);
     cout << "Search Ting Fang in international student list: " << endl;
     iList.Search(iList, f_name, l_name);
@@ -55,7 +55,7 @@ void unitTest_Search(domStudents &dList, intStudents &iList)
     
     
     cout << "Search for student with APP ID #20220116 (normal case): " << endl;
-    Stu_ID = 2022116;
+    Stu_ID = 20220116;
     cout << "Search in domestic student list: " << endl;
     dList.Search(dList, Stu_ID);
     cout << "Search in international student list: " << endl;
@@ -201,12 +201,12 @@ void unitTest_InsertDomInt(){
     intStudent1 = new InternationalStudent("Neil", "Green",4.0,100,*tempToefl,"China");
 
     InternationalStudent* intStudent2;
-    cout << "insert an International Student David Black, CGPA: 4.0, Research Score:100, Country: China, ToeflScore: 25,25,25,25" << endl;
+    cout << "insert an International Student David Black, CGPA: 4.0, Research Score:100, Country: China, ToeflScore: 19,25,25,25" << endl;
     ToeflScore *tempToefl2 = new ToeflScore(19,25,25,25);
     intStudent2 = new InternationalStudent("Neil2", "Green",4.0,100,*tempToefl2,"China");
 
     InternationalStudent* intStudent3;
-    cout << "insert an International Student David Black, CGPA: 4.0, Research Score:100, Country: China, ToeflScore: 25,25,25,25" << endl;
+    cout << "insert an International Student David Black, CGPA: 4.0, Research Score:100, Country: China, ToeflScore: 20,20,20,20" << endl;
     ToeflScore *tempToefl3= new ToeflScore(20,20,20,20);
     intStudent3 = new InternationalStudent("Neil3", "Green",4.0,100,*tempToefl3,"China");
 
@@ -559,7 +559,7 @@ int main(){
      cout <<"  What do you want?" <<endl;
      cout <<"  A for Printing All Sorted Domestic-stu Document" << endl;
      cout <<"  B for Printing All Sorted International-stu Document" << endl;
-     cout <<"  C for Merge the demestic student and the international student and print the list" << endl;
+     cout <<"  C for Merge the domestic student and the international student and print the list" << endl;
      cout <<"  D for Perform the unit test for all search functions" <<endl;
      cout <<"  E for Delete domestic student by name"<<endl;
      cout <<"  F for Delete international student by name" <<endl;
@@ -583,9 +583,9 @@ int main(){
      
      cin >> choose;
      
-     if(choose > 'R' || choose < 'A')
+     if(choose > 'T' || choose < 'A')
      {
-       cout << "Please write number between A and R" << endl;
+       cout << "Please write number between A and T" << endl;
      }
      if(choose == 'R')
        break;
@@ -615,14 +615,14 @@ int main(){
 	     
              cout<<"Please enter the first name: "<<endl;
 	     cin >> domFN;
-             cout<<"Please enter the first name: "<<endl;
+             cout<<"Please enter the last name: "<<endl;
              cin >> domLN;
              stuList.deleteDom(domFN,domLN);
              break;
         case 'F':
              cout<<"Please enter the first name: "<<endl;
 	     cin >> intFN;
-             cout<<"Please enter the first name: "<<endl;
+             cout<<"Please enter the last name: "<<endl;
              cin >> intLN;
              intList.deleteInt(intFN,intLN);  
              break;
@@ -881,7 +881,9 @@ int main(){
                 cout << "international students: " << endl;
  	            intList.printList();
                 intList.Check_Country(intList);
+		break;
                 }
+
             case 'Q':
                 {
                     char answer, Dom_int;
@@ -936,7 +938,8 @@ int main(){
                       } 
                      cout << "If you want to set another requirement to see the information of students. Please input y, any other char back to previous menu" << endl;
                      cin >> answer;
-                    }            
+                    } 
+		break;          
                 }
 
             case 'S':
@@ -1048,4 +1051,3 @@ int main(){
     */
     return 0;
 }
-
