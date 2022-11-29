@@ -553,7 +553,13 @@ intStudents::intStudents(){
 
 void intStudents::insert(InternationalStudent* stud){
     ToeflScore tempToefl = stud->getToeflScore();
-    if((tempToefl.getReading()>=20) && (tempToefl.getWriting()>=20) || (tempToefl.getListening()>=20) || (tempToefl.getSpeaking()>=20) || (tempToefl.getTotalScore()>=93) ){
+    int reading = tempToefl.getReading();
+    int listening = tempToefl.getListening();
+    int speaking = tempToefl.getSpeaking();
+    int writing = tempToefl.getWriting();
+    int total = reading+listening+speaking+writing;
+
+    if((reading>=20) && (writing>=20) && (listening>=20) && (speaking>=20)  && (total>=93)){
  
     if(TopIntStudent==NULL){
         TopIntStudent = stud;
@@ -613,6 +619,9 @@ void intStudents::insert(InternationalStudent* stud){
         }
 
     }
+}
+else{
+    cout << "The student does not meet the TOEFL requirements" << endl;
 }
 
 }

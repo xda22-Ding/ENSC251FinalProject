@@ -76,20 +76,20 @@ void Student::setPassW(int pw){
 //Other member functions
 bool Student::isValid() const
 {
-    if(CGPA < 0 || CGPA > 4.33)
+    if(CGPA < 0 || CGPA > 4.3)
     {
         cout << "the CGPA is invalid. " << endl;
-        return false;
+        exit(1);
     }
     if(research_score < 0 || research_score > 100)
     {
         cout << "the research score is invalid. " << endl;
-        return false;
+        exit(1);
     }
     if( app_id < 20220000 || app_id > 20230000 )
     {
         cout << "the application id is invalid. " << endl;
-        return false;
+        exit(1);
     }
     return true;
 }
@@ -116,6 +116,7 @@ DomesticStudent::DomesticStudent(string fn, string ln, float cgpa, int score, st
 {
     this->province = province;
     nextDom = NULL;
+    isValid();
 }
 //Getter
 string DomesticStudent::getProvince() const
@@ -209,6 +210,7 @@ InternationalStudent::InternationalStudent(string fn, string ln, float cgpa, int
     setToeflScore(toefl_score);
     setCountry(country);
     nextInt = NULL;
+    isValid();
 }
 //Getters
 ToeflScore InternationalStudent::getToeflScore() const
