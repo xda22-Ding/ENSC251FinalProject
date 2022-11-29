@@ -950,6 +950,10 @@ int main(){
                     cin >>IntLast;
                     IntLast = intList.checKIntInput(IntLast);
                     InternationalStudent *intStudent_rank = intList.Search1(intList, IntFirst, IntLast);
+                    if(intStudent_rank == NULL){
+                        cout << "not found!" << endl;
+                        break;
+                    }
                     cout << intList.rankStudent(intStudent_rank) << endl;
                     break;
 
@@ -965,6 +969,10 @@ int main(){
                     cin >>IntLast;
                     IntLast = intList.checKIntInput(IntLast);
                     DomesticStudent *domStudent_rank = stuList.Search1(stuList, IntFirst, IntLast);
+                    if(domStudent_rank == NULL){
+                        cout << "not found!" << endl;
+                        break;
+                    }
                     cout << stuList.rankStudent(domStudent_rank) << endl;
                     break;
 

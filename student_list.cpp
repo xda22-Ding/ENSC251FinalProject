@@ -335,6 +335,7 @@ DomesticStudent* domStudents:: Search1 (domStudents head,string FirstName, strin
              }
           here = here->nextDom;
      }
+     return NULL;
     }
     if ( count ==0 )
      {
@@ -786,6 +787,7 @@ InternationalStudent* intStudents:: Search1(intStudents head,string FirstName, s
               }
              here = here->nextInt;
         }
+        return NULL;
     }
        
      if ( count ==0 )
